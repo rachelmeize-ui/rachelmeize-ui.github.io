@@ -8,8 +8,8 @@
 
 ## 模板来源
 
-- 基础模板：本项目使用自建静态 HTML/CSS 模板（或教师统一模板，根据实际情况修改此条）
-- 原仓库链接：[待填写]
+- 基础模板：本项目使用自建静态 HTML/CSS 模板，从零搭建
+- 原仓库链接：https://github.com/rachelmeize-ui/rachelmeize-ui.github.io
 
 ## 主要修改内容
 
@@ -22,7 +22,7 @@
 
 ## GitHub Pages 链接
 
-- 正式链接：https://rachelmeize-ui.github.io（Pages 发布后生效）
+- 正式链接：https://rachelmeize-ui.github.io
 
 ## 本地预览
 
