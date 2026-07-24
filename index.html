@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>张美泽 | 个人网站</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- 导航栏 -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#hero" class="nav-logo">张美泽</a>
+        <ul class="nav-links">
+            <li><a href="#about">关于</a></li>
+            <li><a href="#skills">技能</a></li>
+            <li><a href="#projects">项目</a></li>
+            <li><a href="#contact">联系</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="菜单">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero 区块 -->
+<section id="hero" class="hero">
+    <div class="container hero-content">
+        <h1>张美泽</h1>
+        <p class="hero-tagline">深圳大学金融科技学院学生，正在探索 AI 与金融的交叉应用</p>
+        <a href="#about" class="btn">了解更多</a>
+    </div>
+</section>
+
+<!-- About 区块 -->
+<section id="about" class="section section-alt">
+    <div class="container">
+        <h2>关于我</h2>
+        <div class="about-content">
+            <p>我是张美泽，深圳大学金融科技学院的本科生（大二升大三），家乡长春，目前在深圳求学。我的专业方向是金融科技——金融与技术的交叉领域。</p>
+            <p>我正在参加学院组织的 AI Agent 夏令营，学习如何用 AI 工具完成规范化开发流程。暑期曾在至佳科技参与实习，接触了项目协作与 SEO 相关工作，积累了实践经验。我希望用技术解决实际的金融问题，特别是在数据分析、智能决策和自动化方向。</p>
+        </div>
+    </div>
+</section>
+
+<!-- Skills 区块 -->
+<section id="skills" class="section">
+    <div class="container">
+        <h2>技能与兴趣</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>编程基础</h3>
+                <p>Python、SQL 基础，能进行数据处理和简单分析</p>
+            </div>
+            <div class="skill-card">
+                <h3>金融知识</h3>
+                <p>金融市场基础、金融产品设计、风险管理入门</p>
+            </div>
+            <div class="skill-card">
+                <h3>AI / Agent</h3>
+                <p>正在学习 AI Agent 搭建、Vibe Coding 开发流程、Prompt 工程</p>
+            </div>
+            <div class="skill-card">
+                <h3>工具</h3>
+                <p>Git / GitHub、VS Code、WorkBuddy、Claude Code</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects 区块 -->
+<section id="projects" class="section section-alt">
+    <div class="container">
+        <h2>项目</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>个人网站（本项目）</h3>
+                <p class="project-status">进行中</p>
+                <p>使用规范化 AI 开发流程（Vibe → Spec → Harness → Publish）完成的个人网站，发布在 GitHub Pages 上。包含 PRD、设计说明、验收清单和最终报告。</p>
+                <a href="https://github.com/rachelmeize-ui/rachelmeize-ui.github.io" class="project-link">查看项目 →</a>
+            </div>
+            <div class="project-card">
+                <h3>金融科技项目（计划中）</h3>
+                <p class="project-status">规划中</p>
+                <p>计划在后续学习中开展金融科技方向的实践项目，可能涉及数据分析、量化策略或金融 AI 应用。具体方向待确定后更新。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact 区块 -->
+<section id="contact" class="section">
+    <div class="container">
+        <h2>联系方式</h2>
+        <div class="contact-content">
+            <p>欢迎通过以下方式联系我：</p>
+            <div class="contact-links">
+                <a href="https://github.com/rachelmeize-ui" target="_blank" rel="noopener" class="contact-link">
+                    <span class="contact-icon">GH</span>
+                    <span>GitHub 主页</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 页脚 -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 张美泽 | 深圳大学金融科技学院</p>
+    </div>
+</footer>
+
+<script>
+// 移动端导航切换
+document.querySelector('.nav-toggle').addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.toggle('active');
+});
+
+// 点击导航链接后关闭菜单
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('active');
+    });
+});
+
+// 平滑滚动
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+</script>
+
+</body>
+</html>

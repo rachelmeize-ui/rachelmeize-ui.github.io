@@ -1,0 +1,33 @@
+# 依赖目录
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 环境变量与密钥
+.env
+.env.local
+*.key
+*.pem
+
+# 构建产物
+dist/
+build/
+_site/
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 大文件
+*.mp4
+*.mov
+*.zip
