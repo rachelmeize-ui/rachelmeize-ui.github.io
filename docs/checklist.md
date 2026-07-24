@@ -61,8 +61,18 @@
 
 ## 七、TA-Claw 提交
 
-- [ ] 在正确项目文件夹中启动了 Claude Code
-- [ ] TA-Claw 预览中检查了代码树、报告、截图、匹配会话
-- [ ] 预览中未包含密码、API Key、.env 等敏感文件
-- [ ] 完成二次确认
-- [ ] 看到 "Submitted successfully" 成功回执
+- [x] 在正确项目文件夹中启动了 Claude Code（在 `D:\aiagent夏令营\day3` 内的 `personal-website/` 和 `openclaw-bonus/` 各启动一次）
+- [x] TA-Claw 预览中检查了代码树、报告、截图、匹配会话
+- [x] 预览中未包含密码、API Key、.env 等敏感文件（openclaw-bonus 的 `config.local.json` 含网关 token，已从提交副本中删除并重新打包）
+- [x] 完成二次确认
+- [x] 看到 "Submitted successfully" 成功回执（作业代码 QZCO05EU，平台状态 evaluated）
+
+## 八、TA-Claw 二次提交（补交）
+
+> 2026-07-24 首次提交评估为 C（72.75 分）。主要缺口在提交过程证据。针对教师反馈完成以下补强后重新提交（同一作业代码 QZCO05EU，`--force` 覆盖）。
+
+- [x] 排查并清理提交包内 `config.local.json`（含真实网关 token），确保无敏感信息上传
+- [x] 新增 `screenshots/git-log.png` 作为 5 次 Commit 的过程证据
+- [x] `report/final-report.md` 新增"关键 Commit 节点"与"截图证据链（内联）"小节，README 同步补充提交历史
+- [x] `final-report.md` 完善"AI 参与的具体环节"（哪些由 AI 生成、哪些由学生判断修改）
+- [x] `final-report.md` 内联全部 5 张截图，形成完整证据链，避免评审需单独打开图片文件

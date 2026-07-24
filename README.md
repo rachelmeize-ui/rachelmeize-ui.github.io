@@ -52,6 +52,26 @@ personal-website/
 └─ README.md               # 本文件
 ```
 
+## 提交历史
+
+> 本仓库为 git 仓库，提交记录可在 GitHub 远程仓库查看，也可见 `screenshots/git-log.png`。
+
+| Hash | 日期 | 提交说明 |
+|------|------|---------|
+| d24e1e9 | 2026-07-24 16:50 | docs: 添加验收截图，更新 Checklist 与最终报告 |
+| 436fabb | 2026-07-24 16:17 | feat: 添加 SEO meta 描述与 favicon 优化 |
+| f8883bf | 2026-07-24 16:16 | docs: 更新 README 模板来源与线上链接 |
+| da0879f | 2026-07-24 15:54 | docs: 完成个人网站 PRD 与设计说明 |
+| 补交优化 | 2026-07-24 晚 | chore: 勾选 TA-Claw 提交项、完善报告与截图证据链 |
+
+本地验证命令：
+
+```bash
+# 在项目根目录启动静态服务器
+python -m http.server 8000
+# 浏览器访问 http://localhost:8000 即可本地预览
+```
+
 ## 隐私说明
 
-本仓库不包含密码、API Key、Token、.env 文件或任何敏感个人信息。
+本仓库不包含密码、API Key、Token、.env 文件或任何敏感个人信息。加分题 `openclaw-bonus` 的 `config.local.json`（含网关 token）被 `.gitignore` 排除，不会进入提交包。
