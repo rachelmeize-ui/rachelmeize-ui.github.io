@@ -29,3 +29,7 @@
 ## 材料说明
 
 项目原型截图使用模拟数据。星海背景与特征工程页面来自作者提供的项目 PPT，仅作网页格式优化，未声明为原创美术作品。没有上传原 PPT、原始客户数据或私密账本。夜海、蓝色蝴蝶与发光海浪背景来自作者提供的参考截图，经网页格式压缩并通过 CSS 蒙板、透明度与模糊处理融入页面。源码、页面与作品集使用 AI 协作制作。
+
+## 交互与文字
+
+参考作者提供的 React Bits TextPressure、MaskedHeading、StrokeText、FoldText、StarBorder、JellyRadio、CardSwap、Galaxy / Particles 示例，以原生 CSS、SVG、Canvas 和 JavaScript 重新组织适合本网站的效果。没有加入 React 或构建步骤。首页项目卡片由访客手动切换；触屏与减少动态效果均保留静态可读内容。暂停星空动效会同步暂停星光边框和背景粒子。

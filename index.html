@@ -13,8 +13,11 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="motion.css">
   <link rel="stylesheet" href="sea.css">
+  <link rel="stylesheet" href="typography.css">
+  <link rel="stylesheet" href="details.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wdth,wght@8..144,25..151,100..1000&amp;display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -53,11 +56,14 @@
         <div class="hero-visual">
           <span class="floating-caption">a little curiosity,<br><i>a working prototype.</i></span>
           <div class="orbit-label" aria-hidden="true"><span>IDEA</span><span class="orbit-star">✧</span><span>INTO REALITY</span></div>
-          <button class="hero-project" data-case="campus" aria-label="打开 CampusBudget 项目档案">
+          <button class="hero-project deck-card" data-layer="0" data-project-name="CampusBudget" data-case="campus" aria-label="打开 CampusBudget 项目档案">
             <span class="window-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>CampusBudget / 个人原型</span><span aria-hidden="true">↗</span></span>
             <span class="hero-screen"><img src="assets/campus-overview.png" alt="CampusBudget 月度收支与预算总览，使用模拟账本" width="1440" height="1320"></span>
             <span class="hero-project-footer"><strong>把生活费，安排明白。</strong><span>打开项目档案 ↗</span></span>
           </button>
+          <button class="hero-project deck-card" data-layer="1" data-project-name="FinFair" data-case="finfair" aria-label="打开 FinFair 项目档案" aria-hidden="true" tabindex="-1" inert><span class="window-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>FinFair / 团队原型</span><span aria-hidden="true">↗</span></span><span class="hero-screen"><img src="assets/finfair.png" alt="FinFair 团队原型的历史演示界面，使用模拟案例" width="1440" height="900"></span><span class="hero-project-footer"><strong>让金融信息，有据可查。</strong><span>打开项目档案 ↗</span></span></button>
+          <button class="hero-project deck-card" data-layer="2" data-project-name="AI 能力评测" data-case="evaluation" aria-label="打开 AI 能力评测项目档案" aria-hidden="true" tabindex="-1" inert><span class="window-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>AI Evaluation / 小组实践</span><span aria-hidden="true">↗</span></span><span class="hero-screen"><img src="assets/ai-evaluation.svg" alt="AI 能力评测项目的错误类型对照图，原始小组材料整理" width="1200" height="720"></span><span class="hero-project-footer"><strong>回答正确之外，还看什么？</strong><span>打开项目档案 ↗</span></span></button>
+          <div class="deck-controls" role="group" aria-label="切换首页代表项目"><span>PROJECT PREVIEW</span><button id="deck-prev" aria-label="上一个代表项目">←</button><span class="deck-position" id="deck-position" aria-live="polite">01 / 03</span><button id="deck-next" aria-label="下一个代表项目">→</button></div>
           <span class="paper-note">AI 辅助实现<br><b>判断与验证，留在人手里。</b></span>
         </div>
       </div>
@@ -140,5 +146,7 @@
   <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
   <script src="app.js"></script>
   <script src="motion.js"></script>
+  <script src="typography.js"></script>
+  <script src="details.js"></script>
 </body>
 </html>
