@@ -1,144 +1,101 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="张美泽的个人网站 — 深圳大学金融科技学院学生，探索 AI 与金融的交叉应用">
-    <meta name="author" content="张美泽">
-    <title>张美泽 | 个人网站</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
-    <link rel="stylesheet" href="assets/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#182e4b">
+  <meta name="description" content="我是张美泽，这里记录我的 AI 辅助原型、模型能力评测、金融信息核验与数据分析实践。">
+  <meta property="og:title" content="张美泽 · 把好奇变成作品">
+  <meta property="og:description" content="金融科技、AI 产品与那些亲手做出来的尝试。">
+  <title>张美泽 · 把好奇变成作品</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preload" as="image" href="assets/blue-universe.webp">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
-
-<!-- 导航栏 -->
-<nav class="navbar">
-    <div class="nav-container">
-        <a href="#hero" class="nav-logo">张美泽</a>
-        <ul class="nav-links">
-            <li><a href="#about">关于</a></li>
-            <li><a href="#skills">技能</a></li>
-            <li><a href="#projects">项目</a></li>
-            <li><a href="#contact">联系</a></li>
-        </ul>
-        <button class="nav-toggle" aria-label="菜单">
-            <span></span><span></span><span></span>
-        </button>
+  <a class="skip-link" href="#work">跳到作品</a>
+  <header class="header" id="header">
+    <div class="nav-shell">
+      <a class="brand" href="#home" aria-label="张美泽，返回首页"><span class="brand-mark">M<span>z</span>.</span><span class="brand-caption">张美泽<br><small>PRODUCT & POSSIBILITY</small></span></a>
+      <button class="menu-toggle" id="menu-toggle" aria-controls="navigation" aria-expanded="false" aria-label="展开导航"><span></span><span></span></button>
+      <nav class="navigation" id="navigation" aria-label="主导航">
+        <a href="#work">作品<span>Work</span></a>
+        <a href="#playground">试验场<span>Play</span></a>
+        <a href="#about">创作方式<span>Notes</span></a>
+        <a class="nav-contact" href="#contact">聊一聊 <span aria-hidden="true">↗</span></a>
+      </nav>
     </div>
-</nav>
+  </header>
 
-<!-- Hero 区块 -->
-<section id="hero" class="hero">
-    <div class="container hero-content">
-        <h1>张美泽</h1>
-        <p class="hero-tagline">深圳大学金融科技学院学生，正在探索 AI 与金融的交叉应用</p>
-        <a href="#about" class="btn">了解更多</a>
-    </div>
-</section>
-
-<!-- About 区块 -->
-<section id="about" class="section section-alt">
-    <div class="container">
-        <h2>关于我</h2>
-        <div class="about-content">
-            <p>我是张美泽，深圳大学金融科技学院的本科生（大二升大三），家乡长春，目前在深圳求学。我的专业方向是金融科技——金融与技术的交叉领域。</p>
-            <p>我正在参加学院组织的 AI Agent 夏令营，学习如何用 AI 工具完成规范化开发流程。暑期曾在至佳科技参与实习，接触了项目协作与 SEO 相关工作，积累了实践经验。我希望用技术解决实际的金融问题，特别是在数据分析、智能决策和自动化方向。</p>
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-art" aria-hidden="true"></div>
+      <div class="hero-haze" aria-hidden="true"></div>
+      <div class="hero-content shell">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="tiny-star" aria-hidden="true">✦</span> PRODUCT EXPLORER. CURIOUS MAKER.</p>
+          <h1 id="hero-title">你好，<br>我是<span class="name">张美泽</span><span class="hero-period">。</span></h1>
+          <p class="hero-handwriting">Making ideas tangible.</p>
+          <p class="hero-intro">关注 AI 如何进入真实任务。<br>把问题拆开，把原型做出来，再检查它是否成立。</p>
+          <div class="hero-actions"><a class="button button-light" href="#work">看看我的作品 <span aria-hidden="true">↘</span></a><a class="text-link light" href="assets/meize-project-portfolio.pdf" download="张美泽_AI产品作品集.pdf">下载作品集 <span aria-hidden="true">↓</span></a></div>
         </div>
-    </div>
-</section>
-
-<!-- Skills 区块 -->
-<section id="skills" class="section">
-    <div class="container">
-        <h2>技能与兴趣</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3>编程基础</h3>
-                <p>Python、SQL 基础，能进行数据处理和简单分析</p>
-            </div>
-            <div class="skill-card">
-                <h3>金融知识</h3>
-                <p>金融市场基础、金融产品设计、风险管理入门</p>
-            </div>
-            <div class="skill-card">
-                <h3>AI / Agent</h3>
-                <p>正在学习 AI Agent 搭建、Vibe Coding 开发流程、Prompt 工程</p>
-            </div>
-            <div class="skill-card">
-                <h3>工具</h3>
-                <p>Git / GitHub、VS Code、WorkBuddy、Claude Code</p>
-            </div>
+        <div class="hero-visual">
+          <span class="floating-caption">a little curiosity,<br><i>a working prototype.</i></span>
+          <div class="orbit-label" aria-hidden="true"><span>IDEA</span><span class="orbit-star">✧</span><span>INTO REALITY</span></div>
+          <button class="hero-project" data-case="campus" aria-label="打开 CampusBudget 项目档案">
+            <span class="window-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>CampusBudget / 个人原型</span><span aria-hidden="true">↗</span></span>
+            <span class="hero-screen"><img src="assets/campus-overview.png" alt="CampusBudget 月度收支与预算总览，使用模拟账本" width="1440" height="1320"></span>
+            <span class="hero-project-footer"><strong>把生活费，安排明白。</strong><span>打开项目档案 ↗</span></span>
+          </button>
+          <span class="paper-note">AI 辅助实现<br><b>判断与验证，留在人手里。</b></span>
         </div>
-    </div>
-</section>
+      </div>
+      <div class="hero-bottom shell"><span>原型实践 / AI 评测 / 产品设计</span><a href="#work">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a><span>PROJECT COLLECTION / 05</span></div>
+    </section>
 
-<!-- Projects 区块 -->
-<section id="projects" class="section section-alt">
-    <div class="container">
-        <h2>项目</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>个人网站（本项目）</h3>
-                <p class="project-status">进行中</p>
-                <p>使用规范化 AI 开发流程（Vibe → Spec → Harness → Publish）完成的个人网站，发布在 GitHub Pages 上。包含 PRD、设计说明、验收清单和最终报告。</p>
-                <a href="https://github.com/rachelmeize-ui/rachelmeize-ui.github.io" class="project-link">查看项目 →</a>
-            </div>
-            <div class="project-card">
-                <h3>金融科技项目（计划中）</h3>
-                <p class="project-status">规划中</p>
-                <p>计划在后续学习中开展金融科技方向的实践项目，可能涉及数据分析、量化策略或金融 AI 应用。具体方向待确定后更新。</p>
-            </div>
+    <section class="work-section section-pad" id="work" aria-labelledby="work-title">
+      <div class="shell">
+        <div class="section-heading reveal"><div><p class="eyebrow">01 / SELECTED WORK</p><h2 id="work-title">我的作品<span class="serif-amp">与</span>尝试<span class="heading-star" aria-hidden="true">✧</span></h2></div><p class="section-aside">从一个具体问题开始。<br>用可展示的过程，讲清楚我做了什么。</p></div>
+        <div class="work-toolbar reveal"><div class="filters" role="group" aria-label="按方向筛选作品"><button class="filter active" data-filter="all" aria-pressed="true">全部作品 <small>05</small></button><button class="filter" data-filter="prototype" aria-pressed="false">AI 辅助原型</button><button class="filter" data-filter="evaluation" aria-pressed="false">AI 评测</button><button class="filter" data-filter="product" aria-pressed="false">产品设计</button><button class="filter" data-filter="data" aria-pressed="false">数据分析</button></div><span class="filter-note" id="filter-note" aria-live="polite">5 个项目，逐项展开</span></div>
+
+<article class="project reveal" data-category="evaluation" id="project-evaluation"><button class="project-visual evaluation-visual" data-case="evaluation" aria-label="查看 AI 能力评测项目详情"><span class="visual-index">01 / AI EVALUATION</span><span class="eval-poster"><span class="data-poster-kicker">LOOK CLOSER AT THE ANSWER</span><span class="eval-poster-title">答得顺，<br><i>也值得再问一步。</i></span><span class="eval-answer"><small>原记录中的错误摘要</small><b>800 + 1,200 + 2,400</b><strong>“4.40 万元” <em>?</em></strong><span>算式看似正常，单位却放大了十倍。</span></span></span><span class="visual-caption">评测的不只是答案，还有错误发生的位置。</span><span class="open-dot" aria-hidden="true">↗</span></button><div class="project-copy"><p class="project-kicker">AI 能力测试 · 错误归因 · 小组实践</p><h3>AI 能力评测<span class="project-title-cn">“回答正确”之外，还看什么？</span></h3><p class="project-description">从金融信息不足、错误前提和约束计算切入，再用歧义探针观察不同模式的回答。把错误位置留下来，检查评测题本身有没有区分度。</p><dl class="project-facts"><div><dt>项目方式</dt><dd>小组共同完成，保留题目、回答与对照分析</dd></div><div><dt>值得展开</dt><dd>单位错误、约束遗漏、提示污染与题目区分度</dd></div></dl><div class="project-metrics"><span><b>14</b>份模型 / 模式回答记录</span><span><b>3</b>组补充歧义探针</span></div><button class="text-link" data-case="evaluation">打开项目档案 <span aria-hidden="true">↗</span></button></div></article>
+        <article class="project reveal" data-category="prototype" id="project-campus">
+          <button class="project-visual campus-visual" data-case="campus" aria-label="查看 CampusBudget 项目详情"><span class="visual-index">02 / PERSONAL PROJECT</span><span class="project-screen"><span class="window-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>CampusBudget</span><span aria-hidden="true">↗</span></span><img loading="lazy" src="assets/campus-overview.png" alt="CampusBudget 深蓝与薄荷绿配色的真实总览界面，数据为模拟数据" width="1440" height="1320"></span><span class="visual-caption">从记一笔，到看清本月的安排。</span><span class="open-dot" aria-hidden="true">↗</span></button>
+          <div class="project-copy"><p class="project-kicker">AI 辅助开发 · 个人财务管理原型</p><h3>CampusBudget<span class="project-title-cn">让预算，更贴近日常。</span></h3><p class="project-description">记账只是开始。我把收支、消费结构和预算安排串成一个流程，让“还能花多少”有可以回看的计算依据。</p><dl class="project-facts"><div><dt>我的工作</dt><dd>原型实践与迭代，使用 Trae、Codex 辅助实现</dd></div><div><dt>值得展开</dt><dd>解析后确认、可解释提醒、跨月计算修复</dd></div></dl><div class="project-metrics"><span><b>24</b>项预设测试通过</span><span><b>5</b>个功能页面</span></div><div class="project-links"><button class="text-link" data-case="campus">打开项目档案 <span aria-hidden="true">↗</span></button><a class="subtle-link" href="https://github.com/rachelmeize-ui/CampusBudget" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div>
+        </article>
+
+        <article class="project project-reverse reveal" data-category="product" id="project-finfair">
+          <button class="project-visual finfair-visual" data-case="finfair" aria-label="查看 FinFair 项目详情"><span class="visual-index">03 / TEAM PROTOTYPE</span><span class="finfair-paper"><span class="paper-eyebrow">FinFair / 金融信息核验</span><span class="paper-question">宣传怎么说？<br><em>原文怎么写？</em></span><span class="evidence-sample"><span class="sample-tag">模拟案例</span><span>“年化 3.20%”</span><span class="sample-divider" aria-hidden="true">↓</span><strong>业绩比较基准 ≠ 保证收益</strong><small>说明书 P.1 · 逐项对照与原文追溯</small></span></span><span class="visual-caption">让每一个提示，都有核对的入口。</span><span class="open-dot" aria-hidden="true">↗</span></button>
+          <div class="project-copy"><p class="project-kicker">AI 产品设计 · 金融场景 · 团队原型</p><h3>FinFair<span class="project-title-cn">让金融信息，有据可查。</span></h3><p class="project-description">把宣传文案与说明书放在一起，围绕收益、费用和风险提示差异，再把解释带回原文。</p><dl class="project-facts"><div><dt>我的工作</dt><dd>参与功能与流程讨论，负责商业计划、演示和汇报交付</dd></div><div><dt>值得展开</dt><dd>证据紧邻结论、信息缺失提示、用户核对路径</dd></div></dl><p class="role-note">团队协作项目，核心代码由另一位成员完成。</p><button class="text-link" data-case="finfair">打开项目档案 <span aria-hidden="true">↗</span></button></div>
+        </article>
+
+<article class="project project-reverse reveal" data-category="product" id="project-skill"><button class="project-visual skill-visual" data-case="skill" aria-label="查看金融项目 Skill 设计与测试详情"><span class="visual-index">04 / SKILL & VERIFICATION</span><span class="skill-poster"><span class="paper-eyebrow">fintech-project-briefing</span><span class="paper-question">同一个数字，<br><em>现在生效了吗？</em></span><span class="skill-version"><span>V1 / 未识别变更状态<b>380 万元</b><small>误用尚未生效的安排</small></span><span>V2 / 新增生效判断<b>420 万元</b><small>保留当前有效预算</small></span></span><span class="skill-sample-label">模拟信贷情景 / 失败与复测记录</span></span><span class="open-dot" aria-hidden="true">↗</span></button><div class="project-copy"><p class="project-kicker">Skill 工作流 · 质量核验 · 小组实践</p><h3>金融项目汇报 Skill<span class="project-title-cn">让规则，经得起复测。</span></h3><p class="project-description">把事实分级、缺失信息和版本变更写进可复用工作流。通过失败记录找出规则缺口，再对同一任务复测。</p><dl class="project-facts"><div><dt>项目方式</dt><dd>小组共同完成，使用 AI 辅助组织与生成交付材料</dd></div><div><dt>值得展开</dt><dd>变更生效判断、跨文档一致性与不适用任务</dd></div></dl><div class="project-metrics"><span><b>V1 / V2</b>版本对照</span><span><b>7</b>类场景测试记录</span></div><button class="text-link" data-case="skill">打开项目档案 <span aria-hidden="true">↗</span></button></div></article>
+        <article class="project reveal" data-category="data" id="project-marketing">
+          <button class="project-visual marketing-visual" data-case="marketing" aria-label="查看银行客户营销响应预测项目详情"><span class="visual-index">05 / DATA & DECISION</span><span class="data-poster"><span class="data-poster-kicker">BANK MARKETING ANALYTICS</span><span class="data-poster-title">先找到，<br><i>更值得联系的人。</i></span><span class="data-poster-chart"><span style="--bar:73%"><i></i><small>AdaBoost</small></span><span style="--bar:72.4%"><i></i><small>随机森林</small></span><span style="--bar:71.3%"><i></i><small>逻辑回归</small></span></span><span class="data-poster-foot">6 种模型 · 离线评估 · 客户分层建议</span></span><span class="open-dot" aria-hidden="true">↗</span></button>
+          <div class="project-copy"><p class="project-kicker">数据处理 · 模型评估 · 业务分析</p><h3>银行客户营销响应预测<span class="project-title-cn">让数据，参与业务判断。</span></h3><p class="project-description">从客户交易与产品使用信息中提取特征，对比分类模型，讨论有限触达资源应该优先分配给谁。</p><dl class="project-facts"><div><dt>我的工作</dt><dd>数据处理、模型对比与可视化，AI 编程工具辅助实现</dd></div></dl><div class="project-metrics"><span><b>4,050</b>名客户样本</span><span><b>0.727</b>离线测试 AUC</span></div><p class="role-note">Top 20% Lift 1.91，指标来自离线测试，尚未进行真实营销投放。</p><button class="text-link" data-case="marketing">打开项目档案 <span aria-hidden="true">↗</span></button></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="play-section section-pad" id="playground" aria-labelledby="play-title">
+      <div class="shell">
+        <div class="section-heading reveal"><div><p class="eyebrow">02 / A SMALL PLAYGROUND</p><h2 id="play-title">把一个错误，放上桌。</h2></div><p class="section-aside">这是 CampusBudget 迭代中的真实问题。<br>你也可以亲手试一次。</p></div>
+        <div class="play-grid reveal">
+          <div class="play-story"><span class="issue-number">BUG / 001</span><h3>一杯 15 元的奶茶，<br>怎么记成了 <span>2026 元</span>？</h3><p>初版直接取输入中的第一个数字，日期里的年份抢先变成了金额。修复时，我用 AI 辅助分离日期与金额，并增加了保存前确认。</p><ol class="simple-flow"><li><b>识别日期</b><span>先处理明确的日期片段</span></li><li><b>提取金额</b><span>多金额或无效输入提示修改</span></li><li><b>交还判断</b><span>金额、日期与分类由用户核对</span></li></ol><a class="subtle-link" href="https://github.com/rachelmeize-ui/CampusBudget/actions/runs/40483297695" target="_blank" rel="noopener noreferrer">查看对应版本的自动检查结果 ↗</a></div>
+          <div class="demo-panel"><div class="demo-header"><span><i class="status-dot"></i> 交互演示</span><span>日期与金额解析</span></div><div class="demo-body"><div class="mode-switch" role="group" aria-label="切换解析逻辑"><button data-mode="old" aria-pressed="false">初版逻辑</button><button class="active" data-mode="fixed" aria-pressed="true">修正后逻辑</button></div><label for="entry-input">试着记一笔</label><input id="entry-input" value="2026-05-10 奶茶 15" autocomplete="off" maxlength="100"><div class="demo-examples"><button data-example="2026-05-10 奶茶 15">日期 + 金额</button><button data-example="今天午饭 18 元">日常记账</button><button data-example="午饭18 晚饭20">多金额输入</button></div><button class="button button-navy demo-run" id="parse-button">解析这笔记录 <span aria-hidden="true">↗</span></button><div class="demo-result" id="demo-result" aria-live="polite"><p class="demo-placeholder">输入、解析、核对。<br><span>看看两种逻辑有什么不同。</span></p></div><p class="demo-note">此处为浏览器端的简化规则演示，完整实现见项目仓库。演示不调用大模型，也不写入真实账本。</p></div></div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- Contact 区块 -->
-<section id="contact" class="section">
-    <div class="container">
-        <h2>联系方式</h2>
-        <div class="contact-content">
-            <p>欢迎通过以下方式联系我：</p>
-            <div class="contact-links">
-                <a href="https://github.com/rachelmeize-ui" target="_blank" rel="noopener" class="contact-link">
-                    <span class="contact-icon">GH</span>
-                    <span>GitHub 主页</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+    <section class="about-section section-pad" id="about" aria-labelledby="about-title"><div class="shell"><div class="section-heading reveal"><div><p class="eyebrow">03 / NOTES BEHIND THE WORK</p><h2 id="about-title">我在意，<br>作品背后的判断。</h2></div><div class="about-stamp" aria-hidden="true"><span>CURIOUS</span><b>✦</b><span>BY NATURE</span></div></div><div class="about-grid reveal"><div class="about-intro"><p class="lead">有了一个结果，<br>还想知道它为什么成立。</p><p>做原型时，我关注用户能否理解和纠正操作。评测 AI 时，我会继续追问：错的是计算、约束，还是一开始就没识别出问题？</p><p>这些项目保留了演示、错误案例与修改记录。它们呈现了我怎样和 AI 协作，也说明每项成果目前验证到哪里。</p><div class="skill-lines"><span>工具与实践</span><p>Python 数据处理 / Streamlit 原型 / SQLite / Plotly<br>Claude Code / Codex / Trae / AI 协作与结果检查</p></div></div><div class="experience"><p class="small-heading">三条贯穿项目的线索。</p><div class="experience-item"><span class="experience-date">01 / MAKE IT USABLE</span><h3>先做出可以操作的版本</h3><p>用实际界面和完整流程，让需求从抽象描述变成具体体验。</p></div><div class="experience-item"><span class="experience-date">02 / MAKE IT CHECKABLE</span><h3>把依据留在结果旁边</h3><p>保留原文、计算口径、测试输入和版本状态，让结论有可回看的来源。</p></div><div class="experience-item"><span class="experience-date">03 / LEARN FROM FAILURE</span><h3>让一次失败推动下一次修改</h3><p>从日期误判到预算状态错误，保留失败记录，再用同一场景复查修改。</p></div></div></div></div></section>
 
-<!-- 页脚 -->
-<footer class="footer">
-    <div class="container">
-        <p>&copy; 2026 张美泽 | 深圳大学金融科技学院</p>
-    </div>
-</footer>
+    <section class="method-section section-pad" id="method" aria-labelledby="method-title"><div class="shell"><div class="section-heading reveal"><div><p class="eyebrow">04 / HOW I WORK WITH AI</p><h2 id="method-title">让工具生成，<br>让判断有依据。</h2></div><p class="section-aside">我关注的不止是做得快。<br>还包括：结果能否解释，问题能否复现。</p></div><div class="method-grid reveal"><div><span>01</span><h3>把任务说清楚</h3><p>明确使用者、核心流程和预期结果，再让 AI 帮助拆解与探索。</p></div><div><span>02</span><h3>先做出可操作的版本</h3><p>借助 AI 编程工具生成与修改实现，通过页面和输入输出讨论方案。</p></div><div><span>03</span><h3>用案例检查输出</h3><p>从日期误判、预算边界和原文引文中，找到值得继续追问的问题。</p></div><div><span>04</span><h3>留下可回看的材料</h3><p>保留代码、截图、测试与迭代说明，讲清当前成果和后续计划。</p></div></div><p class="method-footnote">例如个人网站实践：替换模板中的占位内容，核对项目状态，检查导航和外链，再反馈给 AI 修改并复查。</p></div></section>
 
-<script>
-// 移动端导航切换
-document.querySelector('.nav-toggle').addEventListener('click', function() {
-    document.querySelector('.nav-links').classList.toggle('active');
-});
+    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="contact-glow" aria-hidden="true"></div><div class="shell contact-content"><p class="eyebrow">SOMETHING GOOD STARTS WITH A CONVERSATION.</p><h2 id="contact-title">下一个想法，<br>也许可以一起做。</h2><p>欢迎交流 AI 产品、原型实践与合作机会。</p><div class="contact-actions"><a class="contact-email" href="mailto:rachel.meize@gmail.com">rachel.meize@gmail.com <span aria-hidden="true">↗</span></a><button class="copy-button" id="copy-email">复制 Gmail</button></div><p class="backup-email">备用邮箱：<a href="mailto:2024290206@szu.edu.cn">2024290206@szu.edu.cn</a></p><div class="contact-links"><a href="https://github.com/rachelmeize-ui" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="assets/meize-project-portfolio.pdf" download="张美泽_AI产品作品集.pdf">PDF 作品集 ↓</a><a href="#home">回到顶部 ↑</a></div></div><footer class="site-footer shell"><span>© 2026 张美泽 / MADE WITH CURIOSITY & AI</span><span>项目分工、模拟数据与验证范围已在案例中注明。</span></footer></section>
+  </main>
 
-// 点击导航链接后关闭菜单
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        document.querySelector('.nav-links').classList.remove('active');
-    });
-});
-
-// 平滑滚动
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-</script>
-
+  <dialog class="case-dialog" id="case-dialog" aria-labelledby="case-title"><div class="dialog-toolbar"><a href="assets/meize-project-portfolio.pdf" download="张美泽_AI产品作品集.pdf">下载完整作品集 ↓</a><button class="dialog-close" id="dialog-close" aria-label="关闭项目档案">关闭 <span aria-hidden="true">×</span></button></div><div id="case-content"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

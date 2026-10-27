@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" width="900" height="320" role="img" aria-label="错误指纹矩阵" font-family="Microsoft YaHei,Arial">
+          <g font-size="12.5" fill="#3a4d68" text-anchor="middle" font-weight="600">
+            <text x="330" y="30" transform="rotate(-12 330 30)">强行作答</text>
+            <text x="440" y="30" transform="rotate(-12 440 30)">前后矛盾</text>
+            <text x="545" y="30" transform="rotate(-12 545 30)">计算错误</text>
+            <text x="650" y="30" transform="rotate(-12 650 30)">单位放大</text>
+            <text x="755" y="30" transform="rotate(-12 755 30)">约束遗漏</text>
+            <text x="855" y="30" transform="rotate(-12 855 30)">自我纠正</text>
+          </g>
+          <g font-size="13.5" fill="#1a2438" font-weight="800">
+            <text x="20" y="72">通义千问</text>
+            <text x="20" y="118">腾讯元宝</text>
+            <text x="20" y="164">Kimi 2.6</text>
+            <text x="20" y="210">文心一言 5.1</text>
+            <text x="20" y="256">DS 快速版</text>
+          </g>
+          <g>
+            <circle cx="330" cy="66" r="13" fill="#c0392f"/><circle cx="435" cy="66" r="13" fill="#c0392f"/><circle cx="540" cy="66" r="6" fill="#e3e8ee"/><circle cx="645" cy="66" r="6" fill="#e3e8ee"/><circle cx="750" cy="66" r="13" fill="#e0a54d"/><circle cx="850" cy="66" r="6" fill="#e3e8ee"/>
+            <circle cx="330" cy="112" r="6" fill="#e3e8ee"/><circle cx="435" cy="112" r="6" fill="#e3e8ee"/><circle cx="540" cy="112" r="13" fill="#e0a54d"/><circle cx="645" cy="112" r="13" fill="#c0392f"/><circle cx="750" cy="112" r="6" fill="#e3e8ee"/><circle cx="850" cy="112" r="6" fill="#e3e8ee"/>
+            <circle cx="330" cy="158" r="6" fill="#e3e8ee"/><circle cx="435" cy="158" r="6" fill="#e3e8ee"/><circle cx="540" cy="158" r="13" fill="#c0392f"/><circle cx="645" cy="158" r="6" fill="#e3e8ee"/><circle cx="750" cy="158" r="6" fill="#e3e8ee"/><circle cx="850" cy="158" r="6" fill="#e3e8ee"/>
+            <circle cx="330" cy="204" r="6" fill="#e3e8ee"/><circle cx="435" cy="204" r="6" fill="#e3e8ee"/><circle cx="540" cy="204" r="6" fill="#e3e8ee"/><circle cx="645" cy="204" r="6" fill="#e3e8ee"/><circle cx="750" cy="204" r="13" fill="#c0392f"/><circle cx="850" cy="204" r="6" fill="#e3e8ee"/>
+            <circle cx="330" cy="250" r="6" fill="#e3e8ee"/><circle cx="435" cy="250" r="6" fill="#e3e8ee"/><circle cx="540" cy="250" r="6" fill="#e3e8ee"/><circle cx="645" cy="250" r="6" fill="#e3e8ee"/><circle cx="750" cy="250" r="13" fill="#e0a54d"/><circle cx="850" cy="250" r="13" fill="#2f7fc4"/>
+          </g>
+          <g font-size="12" fill="#64748b">
+            <circle cx="60" cy="292" r="11" fill="#c0392f"/><text x="78" y="296">严重错误</text>
+            <circle cx="200" cy="292" r="11" fill="#e0a54d"/><text x="218" y="296">次要问题</text>
+            <circle cx="345" cy="292" r="11" fill="#2f7fc4"/><text x="363" y="296">可恢复（自我纠正）</text>
+            <circle cx="540" cy="292" r="6" fill="#e3e8ee"/><text x="555" y="296">无此类错误</text>
+          </g>
+        </svg>
