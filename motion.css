@@ -19,3 +19,5 @@ html{background:#142b48}body{overflow-x:hidden}#app{position:relative;z-index:1;
 .header:not(.scrolled){inset:22px 32px auto;border:1px solid #d6e5ff24;border-radius:999px;background:#21334d52;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.header:not(.scrolled) .nav-shell{height:76px;width:calc(100% - 42px)}
 @media(max-width:800px){.header:not(.scrolled){inset:14px 16px auto;border-radius:22px}.header:not(.scrolled) .nav-shell{height:64px;width:calc(100% - 26px)}.header:not(.scrolled) .navigation{top:64px;border-radius:0 0 22px 22px}.header:not(.scrolled) .brand-mark{font-size:33px}.header:not(.scrolled) .brand-caption{font-size:9px}.header:not(.scrolled) .brand-caption small{font-size:5px}}
 @media(max-width:760px){.hero .meteor-one{left:100%;top:13%;width:230px}.hero .meteor-three{left:90%;top:7%;width:130px}}
+
+@media(min-width:761px){.hero-content{padding-top:144px;min-height:max(673px,calc(100svh - 87px))}}
