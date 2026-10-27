@@ -11,9 +11,15 @@
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preload" as="image" href="assets/blue-universe.webp">
   <link rel="stylesheet" href="style.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="motion.css">
+  <link rel="stylesheet" href="sea.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="intro-backdrop" aria-hidden="true"></div>
+  <div id="app">
   <a class="skip-link" href="#work">跳到作品</a>
   <header class="header" id="header">
     <div class="nav-shell">
@@ -32,10 +38,14 @@
     <section class="hero" id="home" aria-labelledby="hero-title">
       <div class="hero-art" aria-hidden="true"></div>
       <div class="hero-haze" aria-hidden="true"></div>
+      <div class="star-field" aria-hidden="true"></div>
+      <div class="meteor-field" aria-hidden="true"><i class="meteor meteor-one"></i><i class="meteor meteor-two"></i><i class="meteor meteor-three"></i></div>
+      <div class="hero-glass" aria-hidden="true"></div>
+      <span class="sky-coordinate" aria-hidden="true">A SKY FULL OF POSSIBILITIES / 22° N</span>
       <div class="hero-content shell">
         <div class="hero-copy">
           <p class="eyebrow"><span class="tiny-star" aria-hidden="true">✦</span> PRODUCT EXPLORER. CURIOUS MAKER.</p>
-          <h1 id="hero-title">你好，<br>我是<span class="name">张美泽</span><span class="hero-period">。</span></h1>
+          <h1 id="hero-title" class="split-title">你好，<br>我是<span class="name">张美泽</span><span class="hero-period">。</span></h1>
           <p class="hero-handwriting">Making ideas tangible.</p>
           <p class="hero-intro">关注 AI 如何进入真实任务。<br>把问题拆开，把原型做出来，再检查它是否成立。</p>
           <div class="hero-actions"><a class="button button-light" href="#work">看看我的作品 <span aria-hidden="true">↘</span></a><a class="text-link light" href="assets/meize-project-portfolio.pdf" download="张美泽_AI产品作品集.pdf">下载作品集 <span aria-hidden="true">↓</span></a></div>
@@ -51,7 +61,25 @@
           <span class="paper-note">AI 辅助实现<br><b>判断与验证，留在人手里。</b></span>
         </div>
       </div>
-      <div class="hero-bottom shell"><span>原型实践 / AI 评测 / 产品设计</span><a href="#work">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a><span>PROJECT COLLECTION / 05</span></div>
+      <div class="hero-bottom shell"><span>原型实践 / AI 评测 / 产品设计</span><a href="#coordinates">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a><span class="hero-settings"><span>PROJECT COLLECTION / 05</span><button id="motion-toggle" class="motion-toggle" aria-pressed="false">暂停星空动效 <span aria-hidden="true">Ⅱ</span></button></span></div>
+    </section>
+
+
+    <section class="coordinates-section" id="coordinates" aria-labelledby="coordinates-title">
+      <div class="coordinate-grid" aria-hidden="true"></div>
+      <div class="coordinate-orbit" aria-hidden="true"><svg viewBox="0 0 900 500" fill="none"><ellipse cx="450" cy="430" rx="375" ry="270"/><ellipse cx="450" cy="430" rx="270" ry="270" transform="rotate(-35 450 430)"/><path d="M90 400 255 270 405 325 560 155 760 230"/><g><circle cx="90" cy="400" r="5"/><circle cx="255" cy="270" r="5"/><circle cx="405" cy="325" r="5"/><circle cx="560" cy="155" r="8"/><circle cx="760" cy="230" r="5"/></g></svg><span>EVERY ATTEMPT LEAVES A TRACE</span></div>
+      <div class="coordinates-inner shell">
+        <span class="sky-pill">EXPLORATION LOG / 探索记录</span>
+        <h2 id="coordinates-title" class="split-title">想法落地之后，<br>留下可以回看的证据。</h2>
+        <div class="evidence-cards">
+          <a class="evidence-card" href="#work"><span>SELECTED WORK</span><b data-to="5" data-dec="0">5</b><span>个项目档案 <i>↗</i></span></a>
+          <button class="evidence-card" data-case="evaluation"><span>AI EVALUATION</span><b data-to="14" data-dec="0">14</b><span>份模型 / 模式回答记录 <i>↗</i></span></button>
+          <button class="evidence-card" data-case="campus"><span>PROTOTYPE CHECKS</span><b data-to="24" data-dec="0">24</b><span>项预设测试通过 <i>↗</i></span></button>
+          <button class="evidence-card" data-case="skill"><span>SKILL SCENARIOS</span><b data-to="7" data-dec="0">7</b><span>类场景测试记录 <i>↗</i></span></button>
+        </div>
+        <p class="evidence-note">分别来自作品目录、AI 评测、CampusBudget 与 Skill 实践；点击查看对应材料与验证范围。</p>
+        <a class="coordinates-link" href="#work">沿着这些坐标，看看我做过什么 <span>↓</span></a>
+      </div>
     </section>
 
     <section class="work-section section-pad" id="work" aria-labelledby="work-title">
@@ -90,12 +118,27 @@
 
     <section class="about-section section-pad" id="about" aria-labelledby="about-title"><div class="shell"><div class="section-heading reveal"><div><p class="eyebrow">03 / NOTES BEHIND THE WORK</p><h2 id="about-title">我在意，<br>作品背后的判断。</h2></div><div class="about-stamp" aria-hidden="true"><span>CURIOUS</span><b>✦</b><span>BY NATURE</span></div></div><div class="about-grid reveal"><div class="about-intro"><p class="lead">有了一个结果，<br>还想知道它为什么成立。</p><p>做原型时，我关注用户能否理解和纠正操作。评测 AI 时，我会继续追问：错的是计算、约束，还是一开始就没识别出问题？</p><p>这些项目保留了演示、错误案例与修改记录。它们呈现了我怎样和 AI 协作，也说明每项成果目前验证到哪里。</p><div class="skill-lines"><span>工具与实践</span><p>Python 数据处理 / Streamlit 原型 / SQLite / Plotly<br>Claude Code / Codex / Trae / AI 协作与结果检查</p></div></div><div class="experience"><p class="small-heading">三条贯穿项目的线索。</p><div class="experience-item"><span class="experience-date">01 / MAKE IT USABLE</span><h3>先做出可以操作的版本</h3><p>用实际界面和完整流程，让需求从抽象描述变成具体体验。</p></div><div class="experience-item"><span class="experience-date">02 / MAKE IT CHECKABLE</span><h3>把依据留在结果旁边</h3><p>保留原文、计算口径、测试输入和版本状态，让结论有可回看的来源。</p></div><div class="experience-item"><span class="experience-date">03 / LEARN FROM FAILURE</span><h3>让一次失败推动下一次修改</h3><p>从日期误判到预算状态错误，保留失败记录，再用同一场景复查修改。</p></div></div></div></div></section>
 
-    <section class="method-section section-pad" id="method" aria-labelledby="method-title"><div class="shell"><div class="section-heading reveal"><div><p class="eyebrow">04 / HOW I WORK WITH AI</p><h2 id="method-title">让工具生成，<br>让判断有依据。</h2></div><p class="section-aside">我关注的不止是做得快。<br>还包括：结果能否解释，问题能否复现。</p></div><div class="method-grid reveal"><div><span>01</span><h3>把任务说清楚</h3><p>明确使用者、核心流程和预期结果，再让 AI 帮助拆解与探索。</p></div><div><span>02</span><h3>先做出可操作的版本</h3><p>借助 AI 编程工具生成与修改实现，通过页面和输入输出讨论方案。</p></div><div><span>03</span><h3>用案例检查输出</h3><p>从日期误判、预算边界和原文引文中，找到值得继续追问的问题。</p></div><div><span>04</span><h3>留下可回看的材料</h3><p>保留代码、截图、测试与迭代说明，讲清当前成果和后续计划。</p></div></div><p class="method-footnote">例如个人网站实践：替换模板中的占位内容，核对项目状态，检查导航和外链，再反馈给 AI 修改并复查。</p></div></section>
+    <section class="method-section orbit-method" id="method" aria-labelledby="method-title">
+      <div class="method-heading"><p class="eyebrow">04 / HOW I WORK WITH AI</p><h2 id="method-title" class="split-title">让工具生成，<br>让判断有依据。</h2><p>从问题，到原型，再回到证据。</p><span class="method-hint">悬停、点击或用键盘切换 / 01—03</span></div>
+      <div class="method-constellation" aria-hidden="true">✧<span></span>✦</div>
+      <div class="method-track" role="group" aria-label="与 AI 协作的三个阶段">
+        <button class="method-panel is-active" aria-expanded="true" aria-controls="method-step-1" aria-label="阶段一：把问题说清楚"><span class="method-panel-in"><span class="method-number" aria-hidden="true">1</span><span class="method-step" id="method-step-1"><span class="step-coordinate">01 / FRAME THE QUESTION</span><strong>把问题说清楚</strong><span>明确使用者、核心流程与预期结果。先决定什么值得交给 AI，再讨论怎么实现。</span><small>FinFair / 将宣传与说明书对照，保留原文核对入口。</small></span></span><span class="panel-collapsed-label" aria-hidden="true">定义问题</span></button>
+        <button class="method-panel" aria-expanded="false" aria-controls="method-step-2" aria-label="阶段二：把想法做出来"><span class="method-panel-in"><span class="method-number" aria-hidden="true">2</span><span class="method-step" id="method-step-2"><span class="step-coordinate">02 / MAKE IT TANGIBLE</span><strong>把想法做出来</strong><span>借助 AI 编程工具生成、修改实现，用可以操作的界面和输入输出，让方案变得具体。</span><small>CampusBudget / 记账、预算、消费分析与确认交互。</small></span></span><span class="panel-collapsed-label" aria-hidden="true">原型实现</span></button>
+        <button class="method-panel" aria-expanded="false" aria-controls="method-step-3" aria-label="阶段三：让结果经得起检查"><span class="method-panel-in"><span class="method-number" aria-hidden="true">3</span><span class="method-step" id="method-step-3"><span class="step-coordinate">03 / FOLLOW THE EVIDENCE</span><strong>让结果经得起检查</strong><span>检查日期、金额、约束和原文依据。保留失败输入、修复与复测记录，讲清验证到哪里。</span><small>从 2026 元误判，到 Skill 的 380 / 420 万元版本对照。</small></span></span><span class="panel-collapsed-label" aria-hidden="true">验证迭代</span></button>
+      </div>
+    </section>
 
-    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="contact-glow" aria-hidden="true"></div><div class="shell contact-content"><p class="eyebrow">SOMETHING GOOD STARTS WITH A CONVERSATION.</p><h2 id="contact-title">下一个想法，<br>也许可以一起做。</h2><p>欢迎交流 AI 产品、原型实践与合作机会。</p><div class="contact-actions"><a class="contact-email" href="mailto:rachel.meize@gmail.com">rachel.meize@gmail.com <span aria-hidden="true">↗</span></a><button class="copy-button" id="copy-email">复制 Gmail</button></div><p class="backup-email">备用邮箱：<a href="mailto:2024290206@szu.edu.cn">2024290206@szu.edu.cn</a></p><div class="contact-links"><a href="https://github.com/rachelmeize-ui" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="assets/meize-project-portfolio.pdf" download="张美泽_AI产品作品集.pdf">PDF 作品集 ↓</a><a href="#home">回到顶部 ↑</a></div></div><footer class="site-footer shell"><span>© 2026 张美泽 / MADE WITH CURIOSITY & AI</span><span>项目分工、模拟数据与验证范围已在案例中注明。</span></footer></section>
+    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="contact-sea" aria-hidden="true"></div><div class="contact-glow" aria-hidden="true"></div><div class="star-field" aria-hidden="true"></div><div class="meteor-field contact-meteors" aria-hidden="true"><i class="meteor meteor-one"></i><i class="meteor meteor-three"></i></div><div class="shell contact-content"><p class="eyebrow">SOMETHING GOOD STARTS WITH A CONVERSATION.</p><h2 id="contact-title" class="split-title">下一个想法，<br>也许可以一起做。</h2><p>欢迎交流 AI 产品、原型实践与合作机会。</p><div class="contact-actions"><a class="contact-email" href="mailto:rachel.meize@gmail.com">rachel.meize@gmail.com <span aria-hidden="true">↗</span></a><button class="copy-button" id="copy-email">复制 Gmail</button></div><p class="backup-email">备用邮箱：<a href="mailto:2024290206@szu.edu.cn">2024290206@szu.edu.cn</a></p><div class="contact-links"><a href="https://github.com/rachelmeize-ui" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="assets/meize-project-portfolio.pdf" download="张美泽_AI产品作品集.pdf">PDF 作品集 ↓</a><a href="#home">回到顶部 ↑</a></div></div><footer class="site-footer shell"><svg class="footer-emblem" viewBox="0 0 80 80" aria-label="张美泽的星海标记" role="img"><circle class="footer-ring" cx="40" cy="40" r="36" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="227" stroke-dashoffset="227" transform="rotate(-90 40 40)"/><g fill="currentColor"><circle class="footer-dot" cx="23" cy="40" r="3"/><circle class="footer-dot" cx="40" cy="40" r="3"/><circle class="footer-dot" cx="57" cy="40" r="3"/></g><path class="footer-mark" d="M25 53V29L40 46 55 29V53" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="110" stroke-dashoffset="110"/></svg><span>© 2026 张美泽 / MADE WITH CURIOSITY & AI</span><span>项目分工、模拟数据与验证范围已在案例中注明。</span></footer></section>
   </main>
+
+  </div>
 
   <dialog class="case-dialog" id="case-dialog" aria-labelledby="case-title"><div class="dialog-toolbar"><a href="assets/meize-project-portfolio.pdf" download="张美泽_AI产品作品集.pdf">下载完整作品集 ↓</a><button class="dialog-close" id="dialog-close" aria-label="关闭项目档案">关闭 <span aria-hidden="true">×</span></button></div><div id="case-content"></div></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="app.js"></script>
+  <script src="motion.js"></script>
 </body>
 </html>
