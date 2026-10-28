@@ -124,7 +124,7 @@
     gsap.to('.hero-glass',{yPercent:-28,ease:'none',scrollTrigger:{trigger:'#home',start:'top top',end:'bottom top',scrub:true}});
     }
     document.querySelectorAll('.reveal:not(.prologue-stage .reveal)').forEach(element=>gsap.from(element,{opacity:0,y:28,duration:.9,ease:'power3.out',scrollTrigger:{trigger:element,start:'top 91%',once:true}}));
-    document.querySelectorAll('.split-title:not(#hero-title):not(.prologue-stage .split-title)').forEach(element=>gsap.from(element.querySelectorAll('.w'),{opacity:0,y:22,filter:'blur(8px)',duration:.8,stagger:.035,ease:'power3.out',scrollTrigger:{trigger:element,start:'top 86%',once:true}}));
+    document.querySelectorAll('.split-title:not(#hero-title):not(.prologue-stage .split-title):not(.flow-scene .split-title)').forEach(element=>gsap.from(element.querySelectorAll('.w'),{opacity:0,y:22,filter:'blur(8px)',duration:.8,stagger:.035,ease:'power3.out',scrollTrigger:{trigger:element,start:'top 86%',once:true}}));
     const media = gsap.matchMedia();
     if(!document.documentElement.classList.contains('prologue-mode')) {
     media.add('(min-width:901px)',()=>{
@@ -145,14 +145,16 @@
     });
     } else setCounters(1);
     media.add('(min-width:761px)',()=>{
-      gsap.from('.method-panel-in',{y:100,opacity:0,duration:1.1,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'#method',start:'top 65%',once:true}});
+      if(!document.documentElement.classList.contains('flow-mode')) gsap.from('.method-panel-in',{y:100,opacity:0,duration:1.1,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'#method',start:'top 65%',once:true}});
       gsap.to('.method-constellation',{x:65,ease:'none',scrollTrigger:{trigger:'#method',start:'top bottom',end:'bottom top',scrub:true}});
     });
     media.add('(max-width:760px)',()=>{
-      panels.forEach(panel=>gsap.from(panel.querySelector('.method-panel-in'),{y:25,opacity:0,duration:.8,scrollTrigger:{trigger:panel,start:'top 91%',once:true}}));
+      if(!document.documentElement.classList.contains('flow-mode')) panels.forEach(panel=>gsap.from(panel.querySelector('.method-panel-in'),{y:25,opacity:0,duration:.8,scrollTrigger:{trigger:panel,start:'top 91%',once:true}}));
     });
+    if(!document.documentElement.classList.contains('flow-mode')) {
     gsap.fromTo('.contact-sea',{yPercent:-9},{yPercent:0,ease:'none',scrollTrigger:{trigger:'#contact',start:'top bottom',end:'bottom bottom',scrub:true}});
     gsap.from('.contact-content',{y:65,scale:.96,opacity:0,filter:'blur(8px)',duration:1.15,ease:'power3.out',scrollTrigger:{trigger:'#contact',start:'top 65%',once:true}});
+    }
     gsap.timeline({scrollTrigger:{trigger:'.site-footer',start:'top 95%',once:true}})
       .to('.footer-dot',{y:-7,duration:.2,stagger:.08,yoyo:true,repeat:3,ease:'sine.inOut'})
       .to('.footer-dot',{attr:{cx:40,cy:40},duration:.4,ease:'power3.inOut'})
@@ -166,6 +168,19 @@
   if (scrollY > 50 || (location.hash && location.hash !== '#home')) {
     document.querySelector('.intro-backdrop')?.remove();
     setupScroll();
+    // The prologue reorganizes source sections; resolve incoming anchors after layout.
+    const alignIncomingAnchor = () => requestAnimationFrame(() => {
+      const id = location.hash;
+      if (!id || id.startsWith('#case-')) return;
+      const target = document.getElementById(id.slice(1));
+      if (!target) return;
+      const story = target.closest('.prologue-scroll:not(.prologue-static)');
+      const top = id === '#home' ? 0 : id === '#coordinates' && story ? story.getBoundingClientRect().top + scrollY + (story.offsetHeight - innerHeight) * .43 : target.getBoundingClientRect().top + scrollY - 76;
+      if (lenis) lenis.scrollTo(top, {immediate:true});
+      else window.scrollTo({top, behavior:'instant'});
+    });
+    if (document.readyState === 'complete') alignIncomingAnchor();
+    else addEventListener('load', alignIncomingAnchor, {once:true});
   } else {
     document.body.classList.add('motion-intro');
     lenis?.stop();
