@@ -1,6 +1,6 @@
 # 张美泽 · 把好奇变成作品
 
-[打开个人网站](https://rachelmeize-ui.github.io/) · [下载项目作品集](https://rachelmeize-ui.github.io/assets/meize-project-portfolio.pdf) · [Gmail 联系](mailto:rachel.meize@gmail.com)
+[打开个人网站](https://rachelmeize-ui.github.io/) · [下载项目作品集](https://rachelmeize-ui.github.io/assets/meize-project-portfolio.pdf?v=20261028-universe-pdf) · [Gmail 联系](mailto:rachel.meize@gmail.com)
 
 ![蓝色星海风格的个人项目网站首页](assets/site-preview.webp)
 
@@ -43,3 +43,5 @@
 为避免闪动和重绘，取消全页开场缩放、封面重复背景、滚动时的大面积模糊和裁切，仅更新共享背景与可见场景的透明度及轻微变换。新打开或刷新网站从封面开始；站内导航仍可定位章节，案例档案直接链接继续有效。
 
 星海场景 `assets/portal-ocean.webp` 由内置 image_gen 生成，完整提示词和原图保存在本机开发资料中。其他星海与项目视觉来自作者提供的材料。项目数据、验证范围和个人分工未因视觉改版而变化。
+
+作品集已同步为 10 页星海视觉，包含可选择文字、矢量图表、实际界面、目录跳转和联系信息。
