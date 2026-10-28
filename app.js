@@ -134,23 +134,7 @@ const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 
 window.addEventListener('scroll', updateHeader, {passive:true});
 updateHeader();
 
-document.querySelectorAll('[data-filter]').forEach(button => {
-  button.addEventListener('click', () => {
-    const category = button.dataset.filter;
-    document.querySelectorAll('[data-filter]').forEach(other => {
-      const selected = other === button;
-      other.classList.toggle('active', selected);
-      other.setAttribute('aria-pressed', String(selected));
-    });
-    let count = 0;
-    document.querySelectorAll('.project').forEach(project => {
-      const show = category === 'all' || project.dataset.category === category;
-      project.hidden = !show;
-      if (show) { count++; project.classList.add('in-view'); }
-    });
-    document.getElementById('filter-note').textContent = category === 'all' ? '5 个项目，逐项展开' : `当前展示 ${count} 个相关项目`;
-  });
-});
+document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click',()=>document.dispatchEvent(new CustomEvent('portfolio:category',{detail:{category:button.dataset.filter}}))));
 
 let mode = 'fixed';
 let hasParsed = false;

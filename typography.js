@@ -1,97 +1,128 @@
-/* Native, build-free interpretations of the supplied typography examples.
- * Body text, links and project facts are intentionally left untouched.
- */
+/* Build-free adaptations of TextPressure, MaskedHeading, StrokeText and FoldText. */
 (() => {
   'use strict';
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
-  const paused = () => reduce.matches || document.body.classList.contains('sky-paused');
-  const heading = document.getElementById('work-title');
-  heading.classList.add('masked-sea-text');
-  if (!reduce.matches && matchMedia('(hover:hover) and (pointer:fine)').matches) {
-    let frame;
-    heading.addEventListener('pointermove', event => {
-      if (paused()) return;
-      cancelAnimationFrame(frame);
-      const {left,top,width,height} = heading.getBoundingClientRect();
-      const x = ((event.clientX-left)/width-.5)*24;
-      const y = ((event.clientY-top)/height-.5)*12;
-      frame = requestAnimationFrame(()=>{heading.style.setProperty('--type-x',x+'px');heading.style.setProperty('--type-y',y+'px');});
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)');
+  const paused=()=>reduce.matches||document.body.classList.contains('sky-paused');
+  const fine=matchMedia('(hover:hover) and (pointer:fine)');
+  const records=[];
+  const titleEffects=[
+    ['#hero-title','fold'],['.hero-handwriting','pressure'],['#coordinates-title','stroke'],['#work-title','mask'],
+    ['#project-evaluation .project-copy h3','stroke'],['#project-campus .project-copy h3','mask'],
+    ['#project-finfair .project-copy h3','fold'],['#project-skill .project-copy h3','stroke'],
+    ['#project-marketing .project-copy h3','mask'],['#play-title','fold'],['#about-title','fold'],
+    ['#method-title','stroke'],['#contact-title','fold'],['.play-story h3','stroke'],['.about-intro .lead','fold'],
+    ['.experience-item h3','stroke'],['.method-step strong','fold'],['.eval-poster-title','fold'],
+    ['.paper-question','fold'],['.marketing-chart-title','stroke']
+  ];
+  const bodySelector='.about-subtitle,.hero-intro,.project-description,.project-kicker,.project-facts,.role-note,.section-aside,.play-story>p,.play-story>.issue-number,.about-intro>p:not(.lead),.experience-item p,.method-heading>p:not(.eyebrow),.method-step>span:not(.step-coordinate),.contact-content>p:not(.eyebrow)';
+  function splitText(element,effect){
+    if(element.dataset.dynamicText)return;
+    element.dataset.dynamicText=effect;
+    element.classList.add('dynamic-title','effect-'+effect);
+    element.setAttribute('aria-label',element.textContent.trim());
+    if(element.matches('.hero-handwriting'))element.classList.add('pressure-text');
+    let order=0;
+    const visit=node=>[...node.childNodes].forEach(child=>{
+      if(child.nodeType===Node.TEXT_NODE){
+        const fragment=document.createDocumentFragment();
+        const chunks=child.textContent.match(/[A-Za-z0-9]+(?:[’'-][A-Za-z0-9]+)*|\s+|./gu)||[];
+        chunks.forEach(chunk=>{
+          if(/^\s+$/u.test(chunk)){fragment.append(document.createTextNode(chunk));return;}
+          const word=/^[A-Za-z0-9]/.test(chunk)&&chunk.length>1?document.createElement('span'):null;
+          if(word)word.className='typo-word';
+          for(const char of chunk){
+            const unit=document.createElement('span');unit.className='typo-unit';unit.setAttribute('aria-hidden','true');
+            unit.style.setProperty('--glyph-delay',`${Math.min(order*.023,.46).toFixed(3)}s`);
+            const glyph=document.createElement('span');glyph.className='typo-glyph';glyph.dataset.char=char;
+            const ink=document.createElement('span');ink.className='typo-ink';ink.textContent=char;
+            glyph.append(ink);unit.append(glyph);(word||fragment).append(unit);order++;
+          }
+          if(word)fragment.append(word);
+        });
+        child.replaceWith(fragment);
+      } else if(child.nodeType===Node.ELEMENT_NODE&&!['BR','SVG'].includes(child.tagName))visit(child);
     });
-    heading.addEventListener('pointerleave',()=>{cancelAnimationFrame(frame);heading.style.setProperty('--type-x','0px');heading.style.setProperty('--type-y','0px');});
+    visit(element);
+    const record={element,units:[...element.querySelectorAll('.typo-unit')],geometry:[],strength:[],x:0,y:0,inside:false,ripple:0,raf:0};
+    record.strength=record.units.map(()=>0);records.push(record);
+    bindPressure(record);
+    observer.observe(element);
   }
-
-  document.querySelectorAll('.method-number').forEach(number => {
-    const text = number.textContent.trim();
-    number.classList.add('has-stroke');
-    const ns = 'http://www.w3.org/2000/svg';
-    const svg = document.createElementNS(ns,'svg');
-    svg.setAttribute('viewBox','0 0 100 150');svg.setAttribute('class','number-stroke');svg.setAttribute('aria-hidden','true');
-    ['stroke-draw','stroke-fill'].forEach(name=>{
-      const glyph=document.createElementNS(ns,'text');glyph.setAttribute('x','3');glyph.setAttribute('y','127');glyph.setAttribute('font-size','142');glyph.setAttribute('class',name);glyph.textContent=text;svg.append(glyph);
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    const node=entry.target;
+    // The immersive stage controls its own visibility; geometric intersection alone is insufficient.
+    if(node.closest('.narrative-pane')&&!document.querySelector('.narrative-static'))return;
+    node.classList.toggle('type-scope-visible',entry.isIntersecting);
+  }),{threshold:.15});
+  function bodies(scope){
+    scope.querySelectorAll(bodySelector).forEach((node,index)=>{
+      node.classList.add('dynamic-body');node.style.setProperty('--body-delay',Math.min(index%5*.045,.18)+'s');observer.observe(node);
     });
-    number.replaceChildren(svg);
-  });
-  const fold = document.getElementById('play-title');
-  const label = fold.textContent;
-  fold.setAttribute('aria-label',label);
-  fold.replaceChildren(...Array.from(label).map((char,i)=>{
-    const slot=document.createElement('span');slot.className='fold-char';slot.setAttribute('aria-hidden','true');slot.style.setProperty('--fold-i',i);
-    const piece=document.createElement('span');piece.className='fold-piece';piece.textContent=char;slot.append(piece);return slot;
-  }));
-  if ('IntersectionObserver' in window && !reduce.matches) {
-    fold.classList.add('fold-enhanced');
-    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add(entry.target===fold?'fold-visible':'number-ready');observer.unobserve(entry.target);
-    }),{threshold:.15});
-    observer.observe(fold);document.querySelectorAll('.method-panel').forEach(panel=>observer.observe(panel));
   }
-
-  const title = document.querySelector('.hero-handwriting');
-  const copy = title.textContent;
-  title.classList.add('pressure-text');title.setAttribute('lang','en');title.setAttribute('aria-label',copy);
-  const glyphs = Array.from(copy).map(char=>{
-    const slot=document.createElement('span');slot.className='pressure-char'+(char===' '?' pressure-space':'');slot.setAttribute('aria-hidden','true');
-    const glyph=document.createElement('span');glyph.className='pressure-glyph';glyph.textContent=char;slot.append(glyph);return slot;
+  function measure(){
+    for(let i=records.length-1;i>=0;i--)if(!records[i].element.isConnected){records[i].stop();observer.unobserve(records[i].element);records.splice(i,1);}
+    const widths=[];
+    records.forEach(record=>record.units.forEach(unit=>{unit.style.width='';}));
+    records.forEach(record=>widths.push(record.units.map(unit=>parseFloat(getComputedStyle(unit).width)||unit.offsetWidth)));
+    records.forEach((record,index)=>record.units.forEach((unit,i)=>{if(widths[index][i]>0)unit.style.width=widths[index][i]+'px';}));
+    document.dispatchEvent(new CustomEvent('portfolio:type-layout'));
+  }
+  function bindPressure(record){
+    const {element,units}=record;
+    const stop=()=>{cancelAnimationFrame(record.raf);record.raf=0;record.inside=false;record.ripple=0;record.strength.fill(0);units.forEach(unit=>unit.style.setProperty('--pressure','0'));};
+    const geometry=()=>{
+      const boxes=units.map(unit=>unit.getBoundingClientRect());
+      record.geometry=boxes.map(box=>({x:box.left+box.width/2,y:box.top+box.height/2}));
+      const box=element.getBoundingClientRect();record.radius=Math.max(65,Math.min(160,box.width*.28));record.box=box;
+    };
+    const tick=now=>{
+      record.raf=0;
+      if(paused()||!element.closest('.type-in-view,.type-scope-visible')&&element.closest('.narrative-pane')){stop();return;}
+      const age=record.ripple?(now-record.ripple)/1000:1;
+      let moving=false;
+      units.forEach((unit,i)=>{
+        const point=record.geometry[i];if(!point)return;
+        const distance=Math.hypot(point.x-record.x,(point.y-record.y)*1.2);
+        const hover=record.inside?Math.max(0,1-distance/record.radius):0;
+        const wave=age<.8?Math.exp(-Math.pow((distance-age*420)/65,2))*(1-age/.8)*.85:0;
+        const aim=Math.max(hover,wave);
+        record.strength[i]+=(aim-record.strength[i])*.2;
+        const p=record.strength[i];unit.style.setProperty('--pressure',p.toFixed(3));
+        if(Math.abs(aim-p)>.002)moving=true;
+      });
+      if(record.box){
+        element.style.setProperty('--mask-x',`${((record.x-record.box.left)/record.box.width*30-15).toFixed(2)}px`);
+        element.style.setProperty('--mask-y',`${((record.y-record.box.top)/record.box.height*16-8).toFixed(2)}px`);
+      }
+      if(age<.8)moving=true;
+      if(moving)record.raf=requestAnimationFrame(tick);
+    };
+    const wake=()=>{if(!record.raf)record.raf=requestAnimationFrame(tick);};
+    element.addEventListener('pointerenter',event=>{if(paused()||!fine.matches||event.pointerType!=='mouse')return;geometry();record.inside=true;record.x=event.clientX;record.y=event.clientY;wake();});
+    element.addEventListener('pointermove',event=>{if(paused()||!fine.matches||event.pointerType!=='mouse')return;record.x=event.clientX;record.y=event.clientY;wake();},{passive:true});
+    element.addEventListener('pointerleave',()=>{record.inside=false;wake();});
+    element.addEventListener('pointerdown',event=>{if(paused())return;geometry();record.x=event.clientX;record.y=event.clientY;record.ripple=performance.now();wake();},{passive:true});
+    record.stop=stop;
+  }
+  titleEffects.forEach(([selector,effect])=>document.querySelectorAll(selector).forEach(node=>splitText(node,effect)));
+  bodies(document);
+  document.querySelectorAll('.method-number').forEach(number=>{
+    const label=number.textContent.trim();const ns='http://www.w3.org/2000/svg';
+    number.classList.add('has-stroke');const svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 100 150');svg.setAttribute('class','number-stroke');svg.setAttribute('aria-hidden','true');
+    ['stroke-draw','stroke-fill'].forEach(name=>{const glyph=document.createElementNS(ns,'text');glyph.setAttribute('x','3');glyph.setAttribute('y','127');glyph.setAttribute('font-size','142');glyph.setAttribute('class',name);glyph.textContent=label;svg.append(glyph);});number.replaceChildren(svg);
   });
-  title.replaceChildren(...glyphs);
-  // Freeze the character advances, so pressure changes never move surrounding content.
-  let centers=[];
-  const measure=()=>{
-    glyphs.forEach(slot=>{slot.style.width='';slot.firstChild.style.fontVariationSettings="'opsz' 60,'wdth' 100,'wght' 400";});
-    const widths=glyphs.map(slot=>slot.getBoundingClientRect().width);
-    let left=0;centers=widths.map(width=>{const center=left+width/2;left+=width;return center;});
-    glyphs.forEach((slot,i)=>slot.style.width=widths[i]+'px');
-  };
+  document.querySelectorAll('#about-dialog h2').forEach(node=>splitText(node,'stroke'));
+  document.querySelectorAll('#about-dialog h3').forEach(node=>splitText(node,'fold'));
+  bodies(document.getElementById('about-dialog'));
+  const caseContent=document.getElementById('case-content');
+  new MutationObserver(()=>{
+    caseContent.querySelectorAll('h2').forEach(node=>splitText(node,'stroke'));
+    caseContent.querySelectorAll('h3').forEach(node=>splitText(node,'fold'));
+    caseContent.querySelectorAll('.case-lead,.case-section>p').forEach(node=>{node.classList.add('dynamic-body');observer.observe(node);});
+    measure();
+  }).observe(caseContent,{childList:true});
+  let resizeFrame=0;
+  addEventListener('resize',()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(measure);},{passive:true});
   document.fonts?.ready.then(measure);
-  new ResizeObserver(measure).observe(title);
-  if (reduce.matches || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
-  let targetX=-1000, currentX=-1000, frame=0, visible=true;
-  const strengths=glyphs.map(()=>0);
-  const tick=()=>{
-    frame=0;
-    const disabled=paused() || !visible;
-    currentX+=(targetX-currentX)*.17;
-    const width=title.getBoundingClientRect().width;
-    const radius=Math.max(70,width*.24);
-    let moving=false;
-    glyphs.forEach((slot,i)=>{
-      const aim=disabled?0:Math.max(0,1-Math.abs(centers[i]-currentX)/radius);
-      strengths[i]+=(aim-strengths[i])*.18;
-      if(Math.abs(aim-strengths[i])>.003)moving=true;
-      const p=strengths[i];
-      const glyph=slot.firstChild;
-      glyph.style.fontVariationSettings=`'opsz' 60,'wdth' ${100+p*17},'wght' ${400+p*240}`;
-      glyph.style.transform=`translateY(${-p*1.5}px)`;
-      glyph.style.color=`color-mix(in srgb,#f7e5d5 ${Math.round(p*75)}%,#e0e6f4)`;
-    });
-    moving ||= Math.abs(targetX-currentX)>.1;
-    title.classList.toggle('pressure-moving',moving);
-    if(moving && visible)frame=requestAnimationFrame(tick);
-  };
-  const wake=()=>{if(!frame && visible)frame=requestAnimationFrame(tick);};
-  title.addEventListener('pointermove',event=>{targetX=event.clientX-title.getBoundingClientRect().left;wake();});
-  title.addEventListener('pointerleave',()=>{targetX=-1000;wake();});
-  new MutationObserver(wake).observe(document.body,{attributes:true,attributeFilter:['class']});
-  new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible)wake();else{cancelAnimationFrame(frame);frame=0;}},{threshold:0}).observe(title);
+  new MutationObserver(()=>{if(paused())records.forEach(record=>record.stop());}).observe(document.body,{attributes:true,attributeFilter:['class']});
 })();

@@ -10,3 +10,27 @@
 #play-title{text-wrap:balance;line-height:1.45}
 
 .pressure-space{min-width:.28em}@media(max-width:760px){.hero-handwriting.pressure-text{font-size:25px;letter-spacing:-.02em}}
+
+/* Dynamic type throughout the portfolio; each scene owns its entrance. */
+.dynamic-title{--type-ink:#edf5ff;--pressure:0;cursor:default}
+.typo-word{display:inline-block;white-space:nowrap}.typo-unit{display:inline-block;vertical-align:baseline;white-space:pre;perspective:700px;--pressure:0}
+.typo-glyph{position:relative;display:inline-block;transform-origin:50% 0;backface-visibility:hidden}.typo-ink{display:inline-block;color:var(--type-ink);-webkit-text-fill-color:currentColor;transform:translateY(calc(var(--pressure)*-3px)) scale(calc(1 + var(--pressure)*.045),calc(1 + var(--pressure)*.065));transform-origin:50% 75%;font-variation-settings:'wght' calc(var(--type-weight,400) + var(--pressure)*220),'wdth' calc(100 + var(--pressure)*10)}
+.project-title-cn,.about-cinematic em{--type-ink:#c0d7eb}
+.type-in-view .effect-fold .typo-glyph,.effect-fold.type-scope-visible .typo-glyph{animation:letter-unfold .78s var(--glyph-delay) cubic-bezier(.18,.72,.2,1) both}
+.type-in-view .effect-pressure .typo-glyph,.effect-pressure.type-scope-visible .typo-glyph{animation:letter-rise .8s var(--glyph-delay) cubic-bezier(.2,.75,.2,1) both}
+.type-in-view .effect-mask .typo-glyph,.effect-mask.type-scope-visible .typo-glyph{animation:letter-mask-arrive .95s var(--glyph-delay) cubic-bezier(.2,.8,.2,1) both}
+.effect-mask .typo-ink{background-image:linear-gradient(115deg,#e8f6ffb8,#a8dcec88 50%,#eef7ffbc),url('assets/luminous-shore.webp');background-size:200% 100%,180% auto;background-position:calc(45% + var(--mask-x,0px)) 50%,calc(50% + var(--mask-x,0px)) calc(50% + var(--mask-y,0px));background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:.35px #c6e4f383}
+.type-in-view .effect-stroke .typo-ink,.effect-stroke.type-scope-visible .typo-ink{animation:letter-ink-fill .85s calc(var(--glyph-delay) + .16s) ease both}
+.effect-stroke .typo-glyph:after{content:attr(data-char);position:absolute;inset:0;pointer-events:none;color:transparent;-webkit-text-fill-color:transparent;-webkit-text-stroke:.65px #b8daee;opacity:0}
+.type-in-view .effect-stroke .typo-glyph:after,.effect-stroke.type-scope-visible .typo-glyph:after{animation:letter-outline .75s var(--glyph-delay) ease both}
+.type-in-view .dynamic-body,.dynamic-body.type-scope-visible{animation:body-lines-in .85s var(--body-delay,0s) cubic-bezier(.2,.7,.2,1) both}
+.type-in-view .method-panel.is-active .stroke-draw{animation:type-draw 1.25s cubic-bezier(.2,.7,.2,1) both}.type-in-view .method-panel.is-active .stroke-fill{animation:type-fill .8s .4s cubic-bezier(.2,.7,.2,1) both}
+.project:not(.is-project-active) .dynamic-title .typo-glyph,.project:not(.is-project-active) .dynamic-title .typo-ink,.project:not(.is-project-active) .dynamic-title .typo-glyph:after,.project:not(.is-project-active) .dynamic-body{animation:none}
+@keyframes letter-unfold{from{opacity:0;transform:rotateX(-82deg) translateY(7px)}to{opacity:1;transform:rotateX(0) translateY(0)}}
+@keyframes letter-rise{from{opacity:0;transform:translateY(16px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes letter-mask-arrive{from{opacity:.15;transform:translateY(12px) scale(.9)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes letter-ink-fill{0%,28%{color:transparent}100%{color:var(--type-ink)}}
+@keyframes letter-outline{0%{opacity:0;clip-path:inset(0 100% 0 0)}15%{opacity:1}100%{opacity:.8;clip-path:inset(0)}}
+@keyframes body-lines-in{from{opacity:0;clip-path:inset(0 0 75%);transform:translateY(7px)}to{opacity:1;clip-path:inset(0);transform:translateY(0)}}
+.sky-paused .dynamic-title .typo-glyph,.sky-paused .dynamic-title .typo-ink,.sky-paused .dynamic-body{animation:none!important;transform:none!important;opacity:1!important;clip-path:none!important}.sky-paused .effect-stroke .typo-ink{color:var(--type-ink)!important}
+@media(prefers-reduced-motion:reduce){.dynamic-title .typo-glyph,.dynamic-title .typo-ink,.dynamic-body{animation:none!important;transform:none!important;opacity:1!important;clip-path:none!important}.effect-stroke .typo-ink{color:var(--type-ink)!important}.effect-stroke .typo-glyph:after{display:none}}

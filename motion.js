@@ -99,8 +99,7 @@
     gsap.ticker.add(t=>lenis.raf(t*1000));
     gsap.ticker.lagSmoothing(0);
     document.addEventListener('portfolio:work-filter',()=>{const work=document.getElementById('work'),root=document.querySelector('.prologue-scroll');lenis.resize();lenis.scrollTo(root.getBoundingClientRect().top+scrollY+Number(work.dataset.narrativeStop||0),{immediate:true});});
-    const dialog = document.getElementById('case-dialog');
-    new MutationObserver(() => { if (dialog.open) lenis.stop(); else if (!document.body.classList.contains('motion-intro')) lenis.start(); }).observe(dialog,{attributes:true,attributeFilter:['open']});
+    document.querySelectorAll('dialog').forEach(dialog=>new MutationObserver(()=>{if(document.querySelector('dialog[open]'))lenis.stop();else if(!document.body.classList.contains('motion-intro'))lenis.start();}).observe(dialog,{attributes:true,attributeFilter:['open']}));
     document.addEventListener('click', event => {
       const link = event.target.closest('a[href^="#"]');
       if (!link || event.defaultPrevented || event.ctrlKey || event.metaKey || event.shiftKey || link.closest('dialog')) return;
@@ -111,7 +110,7 @@
       if (document.body.classList.contains('motion-intro')) introTimeline?.progress(1);
       lenis.resize();
       const story = target.closest('.prologue-scroll:not(.prologue-static)');
-      if(target.matches('.project')&&target.hidden)document.querySelector('[data-filter=all]').click();
+      if(target.matches('.project'))document.dispatchEvent(new CustomEvent('portfolio:project-select',{detail:{id:target.id}}));
       const narrativeRoot=document.querySelector('.prologue-scroll:not(.narrative-static)');
       const workScene=target.closest('.work-cinema');
       const destination = id === '#home' ? 0 : narrativeRoot&&target.dataset.narrativeStop!==undefined ? narrativeRoot.getBoundingClientRect().top+scrollY+Number(target.dataset.narrativeStop) : workScene&&target.matches('.project') ? workScene.getBoundingClientRect().top+scrollY+Number(target.dataset.workStop||0) : id === '#work'&&target.classList.contains('work-cinema') ? target.getBoundingClientRect().top+scrollY : id === '#coordinates' && story ? story.getBoundingClientRect().top + scrollY + (story.offsetHeight - innerHeight) * .43 : target.getBoundingClientRect().top + window.scrollY - 76;
