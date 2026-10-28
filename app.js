@@ -1,7 +1,7 @@
 'use strict';
 
 const REPO = 'https://github.com/rachelmeize-ui/CampusBudget';
-const PDF = 'assets/meize-project-portfolio.pdf?v=20261028-starlight-final-pdf';
+const PDF = 'assets/meize-project-portfolio.pdf?v=20261029-web-portrait';
 const external = (label, url) => `<a class="text-link" href="${url}" target="_blank" rel="noopener noreferrer">${label} <span aria-hidden="true">↗</span></a>`;
 
 const cases = {
@@ -39,7 +39,7 @@ const cases = {
       <div class="case-grid"><section class="case-section"><h3>证据紧邻结论</h3><p>用户看到风险提示时，应能顺着页码和引文回到原文，理解判断依据。原文入口是核对动作的一部分。</p></section><section class="case-section"><h3>让不确定性可见</h3><p>遇到字段缺失、引用失败或复杂条款时，提示继续核对。用户需要理解产品能够支持的判断范围。</p></section></div>
       <section class="case-section"><h3>理解团队实现的能力与边界</h3><p>团队结合规则提取、同一模型配置下的两阶段语义处理与程序引文检查。逐字引文需要存在于指定页，失败时进行拦截或降级。引用存在，仍需要检查解释是否成立。</p></section>
       <section class="case-section"><h3>下一步验证计划</h3><p>让试用者回到原文解释收益、费用和退出条件，观察证据入口是否被使用，记录理解偏差与任务完成情况。该计划尚未执行。</p></section>
-      <div class="case-actions"><a class="text-link" href="${PDF}" download="张美泽_项目作品集_星光绚彩版.pdf">下载完整作品集 ↓</a></div>`
+      <div class="case-actions"><a class="text-link" href="${PDF}" download="张美泽_网站作品集_竖版纯图.pdf">下载完整作品集 ↓</a></div>`
   },
   marketing: {
     kicker: '05 / BANK MARKETING / DATA & DECISION',
@@ -56,7 +56,7 @@ const cases = {
       <section class="case-section"><h3>业务指标应该怎样理解</h3><p>AdaBoost 的 Top 20% 客户 Lift 为 1.906，四舍五入为 1.91。它表示按模型得分筛选的前 20% 客户，在测试集中的平均响应率约为总体的 1.91 倍。</p><p>这一结果可以支持优先触达和分层验证的建议，但不能直接当作真实投放带来的转化增长。</p></section>
       <section class="case-section"><h3>“最优”模型仍需要讨论</h3><p>AdaBoost 的 AUC 为 0.7271，随机森林为 0.7240，差距较小，尚未验证统计显著性。Top 20% Lift 上，AdaBoost 与逻辑回归相同。因此，模型选择还应结合解释性、执行成本和稳定性。</p></section>
       <section class="case-section"><h3>下一步验证计划</h3><p>补充时间切分与稳定性检查，进一步评估历史划分是否反映未来客户表现。再讨论小范围分层触达实验、执行成本和实际业务收益。该业务验证尚未执行。</p></section>
-      <div class="case-actions"><a class="text-link" href="${PDF}" download="张美泽_项目作品集_星光绚彩版.pdf">下载完整作品集 ↓</a></div>`
+      <div class="case-actions"><a class="text-link" href="${PDF}" download="张美泽_网站作品集_竖版纯图.pdf">下载完整作品集 ↓</a></div>`
   }
 };
 
@@ -70,7 +70,7 @@ cases.evaluation = {
   image:'assets/ai-evaluation.svg',
   alt:'原项目报告中按强行作答、前后矛盾、计算错误、单位放大等类别整理的错误指纹矩阵',
   caption:'原报告中的错误类型矩阵。它反映本次留存样本，未覆盖所有模型能力与使用场景。',
-  content:`<section class="case-section"><h3>从“谁分高”到“错在哪里”</h3><p>正式三题分别检查信息不足识别、错误前提纠正和多重约束计算。扩展记录用于观察语言歧义、字符统计等任务。模型或模式名称按当时记录保留，14 份回答不等于 14 个独立模型。</p></section><div class="case-table-wrap"><table class="case-table"><thead><tr><th>原记录中的问题摘要</th><th>错误发生的位置</th><th>为什么值得追问</th></tr></thead><tbody><tr><td>判断“不能确定”，随后仍给出确定收益数值</td><td>信息不足与前后矛盾</td><td>先识别不确定性，还需要检查后续结论是否守住边界。</td></tr><tr><td>800 + 1,200 + 2,400 写成“4.40 万元”</td><td>单位放大</td><td>算式看似正常，金额单位仍需要单独核对。</td></tr><tr><td>配置方案正确，代入金额后收益算成 5,200 元</td><td>计算与方案不一致</td><td>最终方案、中间代入与输出数值应保持一致。</td></tr></tbody></table></div><section class="case-section"><h3>探针题也需要被检查</h3><p>补充测试保留了时间歧义、金融范围歧义和指代歧义三道探针。按原记录的判定口径，时间探针在 7 组配置中有 3 组识别歧义，其余两题均为 7/7。这提示我们继续检查题目难度和区分度。</p></section><section class="case-section"><h3>清理被提示污染的样本</h3><p>一部分初次粘贴记录属于“审阅已有双解分析”，与干净首答不在同一条件下。补充记录明确区分并重新测试，避免把答案已经出现在上下文中的情况当成独立识别。</p></section><div class="case-callout"><strong>一种结果，需要连同条件一起阅读。</strong><p>不同模式可能同时改变模型版本、路由、联网和推理设置，因此这里只做对照观察。样本量、单轮回答和人工判定均限制了结论的适用范围。</p></div><section class="case-section"><h3>后续可改进的评测设计</h3><p>固定提示与上下文，增加重复测试和未见变体。将评分口径先写清，再比较任务完成率、错误类型与澄清行为。该扩展方案尚未执行。</p></section><div class="case-actions"><a class="text-link" href="${PDF}" download="张美泽_项目作品集_星光绚彩版.pdf">下载项目作品集 ↓</a></div>`
+  content:`<section class="case-section"><h3>从“谁分高”到“错在哪里”</h3><p>正式三题分别检查信息不足识别、错误前提纠正和多重约束计算。扩展记录用于观察语言歧义、字符统计等任务。模型或模式名称按当时记录保留，14 份回答不等于 14 个独立模型。</p></section><div class="case-table-wrap"><table class="case-table"><thead><tr><th>原记录中的问题摘要</th><th>错误发生的位置</th><th>为什么值得追问</th></tr></thead><tbody><tr><td>判断“不能确定”，随后仍给出确定收益数值</td><td>信息不足与前后矛盾</td><td>先识别不确定性，还需要检查后续结论是否守住边界。</td></tr><tr><td>800 + 1,200 + 2,400 写成“4.40 万元”</td><td>单位放大</td><td>算式看似正常，金额单位仍需要单独核对。</td></tr><tr><td>配置方案正确，代入金额后收益算成 5,200 元</td><td>计算与方案不一致</td><td>最终方案、中间代入与输出数值应保持一致。</td></tr></tbody></table></div><section class="case-section"><h3>探针题也需要被检查</h3><p>补充测试保留了时间歧义、金融范围歧义和指代歧义三道探针。按原记录的判定口径，时间探针在 7 组配置中有 3 组识别歧义，其余两题均为 7/7。这提示我们继续检查题目难度和区分度。</p></section><section class="case-section"><h3>清理被提示污染的样本</h3><p>一部分初次粘贴记录属于“审阅已有双解分析”，与干净首答不在同一条件下。补充记录明确区分并重新测试，避免把答案已经出现在上下文中的情况当成独立识别。</p></section><div class="case-callout"><strong>一种结果，需要连同条件一起阅读。</strong><p>不同模式可能同时改变模型版本、路由、联网和推理设置，因此这里只做对照观察。样本量、单轮回答和人工判定均限制了结论的适用范围。</p></div><section class="case-section"><h3>后续可改进的评测设计</h3><p>固定提示与上下文，增加重复测试和未见变体。将评分口径先写清，再比较任务完成率、错误类型与澄清行为。该扩展方案尚未执行。</p></section><div class="case-actions"><a class="text-link" href="${PDF}" download="张美泽_网站作品集_竖版纯图.pdf">下载项目作品集 ↓</a></div>`
 };
 cases.skill = {
   kicker:'04 / FINTECH PROJECT BRIEFING / SKILL & VERIFICATION',
@@ -80,7 +80,7 @@ cases.skill = {
   role:'小组共同完成，使用 AI 辅助形成工作流、Word/PPT 交付材料和测试记录。展示内容依据组内留存的版本与复测证据整理。',
   state:'模拟金融情景下的 Skill 实践。保留 V1/V2 与 7 类场景测试记录，未接入真实机构业务或实际授信决策。',
   image:null,
-  content:`<section class="case-section"><h3>一个真实暴露的规则缺口</h3><p>模拟信贷材料同时包含当前 420 万元预算与未来条件性 380 万元安排。V1 将尚未生效的 380 万元当作当前预算，暴露了“数字确实存在于材料里，使用状态却判断错了”的问题。</p></section><div class="skill-case-comparison"><div><span>V1 / 原场景失败</span><strong>380 万元</strong><p>误用未生效的后续安排。</p></div><div><span>V2 / 同场景复测</span><strong>420 万元</strong><p>保留当前预算，380 万登记为未生效变更。</p></div></div><section class="case-section"><h3>V2 增加了什么</h3><p>在应用变更前，先检查批准状态、触发条件、生效时间和适用版本。仅在生效条件明确满足后，变更才能覆盖当前基线，同时记录原值、新值和受影响文件。</p><p>版本对照中，该规则同步进入来源判断、变更流程与最终一致性检查。它是规则原则的补充，而不是把某个案例的 420 或 380 万写死在 Skill 内。</p></section><section class="case-section"><h3>7 类情景，而非一个通过率</h3><div class="case-table-wrap"><table class="case-table"><thead><tr><th>任务</th><th>希望检查的行为</th></tr></thead><tbody><tr><td>T1 正常案例</td><td>区分当前基线与未生效变更，保留失败与复测。</td></tr><tr><td>T2 缺失信息</td><td>将缺少的预算列为待确认，不自动补造。</td></tr><tr><td>T3 不适用任务</td><td>普通写诗请求不进入项目汇报工作流。</td></tr><tr><td>T4 正式变更</td><td>先形成影响清单，再同步修改 Word 与 PPT。</td></tr><tr><td>T5 场景迁移</td><td>从反欺诈切换到信贷时重新识别风险。</td></tr><tr><td>T6 越界请求</td><td>不把要求保证改善的说法写成已验证结果。</td></tr><tr><td>T7 自定义检查</td><td>将未经验证的供应商主张与项目事实区分。</td></tr></tbody></table></div></section><section class="case-section"><h3>检查 AI 诊断本身</h3><p>同组材料纠错实践还保留了问题台账：初版诊断中存在描述不准和遗漏，后续逐条核对来源后修正。AI 的检查结果本身也需要核验，特别是跨文件口径与虚构证据。</p></section><section class="case-section"><h3>当前范围</h3><p>测试记录包含失败、操作问题与复测，不将有限情景直接当作通用可靠率。真实业务还需要更独立的测试集与人工审核机制。</p></section><div class="case-actions"><a class="text-link" href="${PDF}" download="张美泽_项目作品集_星光绚彩版.pdf">下载项目作品集 ↓</a></div>`
+  content:`<section class="case-section"><h3>一个真实暴露的规则缺口</h3><p>模拟信贷材料同时包含当前 420 万元预算与未来条件性 380 万元安排。V1 将尚未生效的 380 万元当作当前预算，暴露了“数字确实存在于材料里，使用状态却判断错了”的问题。</p></section><div class="skill-case-comparison"><div><span>V1 / 原场景失败</span><strong>380 万元</strong><p>误用未生效的后续安排。</p></div><div><span>V2 / 同场景复测</span><strong>420 万元</strong><p>保留当前预算，380 万登记为未生效变更。</p></div></div><section class="case-section"><h3>V2 增加了什么</h3><p>在应用变更前，先检查批准状态、触发条件、生效时间和适用版本。仅在生效条件明确满足后，变更才能覆盖当前基线，同时记录原值、新值和受影响文件。</p><p>版本对照中，该规则同步进入来源判断、变更流程与最终一致性检查。它是规则原则的补充，而不是把某个案例的 420 或 380 万写死在 Skill 内。</p></section><section class="case-section"><h3>7 类情景，而非一个通过率</h3><div class="case-table-wrap"><table class="case-table"><thead><tr><th>任务</th><th>希望检查的行为</th></tr></thead><tbody><tr><td>T1 正常案例</td><td>区分当前基线与未生效变更，保留失败与复测。</td></tr><tr><td>T2 缺失信息</td><td>将缺少的预算列为待确认，不自动补造。</td></tr><tr><td>T3 不适用任务</td><td>普通写诗请求不进入项目汇报工作流。</td></tr><tr><td>T4 正式变更</td><td>先形成影响清单，再同步修改 Word 与 PPT。</td></tr><tr><td>T5 场景迁移</td><td>从反欺诈切换到信贷时重新识别风险。</td></tr><tr><td>T6 越界请求</td><td>不把要求保证改善的说法写成已验证结果。</td></tr><tr><td>T7 自定义检查</td><td>将未经验证的供应商主张与项目事实区分。</td></tr></tbody></table></div></section><section class="case-section"><h3>检查 AI 诊断本身</h3><p>同组材料纠错实践还保留了问题台账：初版诊断中存在描述不准和遗漏，后续逐条核对来源后修正。AI 的检查结果本身也需要核验，特别是跨文件口径与虚构证据。</p></section><section class="case-section"><h3>当前范围</h3><p>测试记录包含失败、操作问题与复测，不将有限情景直接当作通用可靠率。真实业务还需要更独立的测试集与人工审核机制。</p></section><div class="case-actions"><a class="text-link" href="${PDF}" download="张美泽_网站作品集_竖版纯图.pdf">下载项目作品集 ↓</a></div>`
 };
 
 const dialog = document.getElementById('case-dialog');
