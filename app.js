@@ -95,7 +95,7 @@ function openCase(id, updateHash = true) {
   previousFocus = document.activeElement;
   if (!dialog.open) previousHash = location.hash.startsWith('#case-') ? '#work' : (location.hash || '#work');
   activeCase = id;
-  caseContent.innerHTML = `<article class="case-inner"><p class="case-kicker">${item.kicker}</p><h2 id="case-title">${item.title}</h2><p class="case-lead">${item.lead}</p><div class="case-meta"><div><strong>${item.roleLabel || "我的参与"}</strong>${item.role}</div><div><strong>当前状态</strong>${item.state}</div></div>${item.image ? `<img class="case-image ${id==='marketing'||id==='evaluation'?'full':''}" src="${item.image}" alt="${item.alt}"><p class="case-caption">${item.caption}</p>` : ""}${item.content}</article>`;
+  caseContent.innerHTML = `<article class="case-inner"><header class="case-hero"><p class="case-kicker">${item.kicker}</p><h2 id="case-title">${item.title}</h2><p class="case-lead">${item.lead}</p></header><div class="case-meta"><div><strong>${item.roleLabel || "我的参与"}</strong>${item.role}</div><div><strong>当前状态</strong>${item.state}</div></div>${item.image ? `<img class="case-image ${id==='marketing'||id==='evaluation'?'full':''}" src="${item.image}" alt="${item.alt}"><p class="case-caption">${item.caption}</p>` : ""}${item.content}</article>`;
   if (!dialog.open) dialog.showModal();
   document.body.classList.add('modal-open');
   dialog.scrollTop = 0;

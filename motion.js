@@ -127,9 +127,8 @@
       setCounters(0);
       const proxy = {p:0};
       gsap.from('.evidence-card',{y:40,opacity:0,duration:.75,stagger:.08,scrollTrigger:{trigger:'.evidence-cards',start:'top 87%'}});
-      gsap.timeline({scrollTrigger:{trigger:'#coordinates',start:'top top',end:'+=85%',pin:true,scrub:1,invalidateOnRefresh:true}})
-        .to(proxy,{p:1,ease:'none',onUpdate:()=>setCounters(proxy.p)},0)
-        .fromTo('.coordinate-orbit',{yPercent:45,opacity:.15},{yPercent:0,opacity:.65,ease:'none'},0);
+      gsap.to(proxy,{p:1,duration:1.7,ease:'power2.out',onUpdate:()=>setCounters(proxy.p),scrollTrigger:{trigger:'.evidence-cards',start:'top 88%',once:true}});
+      gsap.fromTo('.coordinate-orbit',{yPercent:25,opacity:.2},{yPercent:0,opacity:.5,ease:'none',scrollTrigger:{trigger:'#coordinates',start:'top bottom',end:'bottom bottom',scrub:true}});
       return ()=>setCounters(1);
     });
     media.add('(max-width:900px)',()=>{
