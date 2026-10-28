@@ -16,6 +16,8 @@
 .typo-word{display:inline-block;white-space:nowrap}.typo-unit{display:inline-block;vertical-align:baseline;white-space:pre;perspective:700px;--pressure:0}
 .typo-glyph{position:relative;display:inline-block;transform-origin:50% 0;backface-visibility:hidden}.typo-ink{display:inline-block;color:var(--type-ink);-webkit-text-fill-color:currentColor;transform:translateY(calc(var(--pressure)*-3px)) scale(calc(1 + var(--pressure)*.045),calc(1 + var(--pressure)*.065));transform-origin:50% 75%;font-variation-settings:'wght' calc(var(--type-weight,400) + var(--pressure)*220),'wdth' calc(100 + var(--pressure)*10)}
 .project-title-cn,.about-cinematic em{--type-ink:#c0d7eb}
+/* The FinFair paper is a light surface inside a dark scene. Keep animated ink local. */
+.finfair-paper{color:#233d59}.finfair-paper .paper-question{--type-ink:#294663;color:#294663}.finfair-paper .paper-question em{--type-ink:#625174;color:#625174}.finfair-paper .paper-eyebrow{color:#52657c}.finfair-paper .evidence-sample{color:#2d415e;border-top-color:#b5c6d8}.finfair-paper .evidence-sample strong{color:#284c68;font-weight:600}.finfair-paper .evidence-sample small{color:#53657c}.finfair-paper .sample-tag{background:#dce6f2;color:#415270}.finfair-paper .sample-divider{color:#5d7088}
 .type-in-view .effect-fold .typo-glyph,.effect-fold.type-scope-visible .typo-glyph{animation:letter-unfold .78s var(--glyph-delay) cubic-bezier(.18,.72,.2,1) both}
 .type-in-view .effect-pressure .typo-glyph,.effect-pressure.type-scope-visible .typo-glyph{animation:letter-rise .8s var(--glyph-delay) cubic-bezier(.2,.75,.2,1) both}
 .type-in-view .effect-mask .typo-glyph,.effect-mask.type-scope-visible .typo-glyph{animation:letter-mask-arrive .95s var(--glyph-delay) cubic-bezier(.2,.8,.2,1) both}
