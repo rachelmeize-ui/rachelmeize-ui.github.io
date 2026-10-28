@@ -1,6 +1,6 @@
 # 张美泽 · 把好奇变成作品
 
-[打开个人网站](https://rachelmeize-ui.github.io/) · [下载项目作品集](https://rachelmeize-ui.github.io/assets/meize-project-portfolio.pdf?v=20261028-universe-pdf) · [Gmail 联系](mailto:rachel.meize@gmail.com)
+[打开个人网站](https://rachelmeize-ui.github.io/) · [下载项目作品集](https://rachelmeize-ui.github.io/assets/meize-project-portfolio.pdf?v=20261028-starlight-final-pdf) · [Gmail 联系](mailto:rachel.meize@gmail.com)
 
 ![蓝色星海风格的个人项目网站首页](assets/site-preview.webp)
 
@@ -46,4 +46,6 @@
 
 “我在意”章节使用女性学习者的 AI 概念场景，不代表候选人真实照片。静帧由内置 image_gen 生成，人物动作由 Hugging Face 上 `zerogpu-aoti/wan2-2-fp8da-aoti-faster` 的 Wan 2.2 公共演示、免费匿名额度生成；原始片段 3.56 秒、832×480，经正反循环处理为约 7 秒的网页视频，没有额外的整幅镜头晃动。流星为独立 CSS 轨迹。离开章节、打开弹窗、暂停动效、切到后台或开启减少动态效果时暂停视频，省流量模式使用静态封面。原图、动作提示词及原始片段保存在本机开发资料中。
 
-作品集已同步为 10 页星海视觉，包含可选择文字、矢量图表、实际界面、目录跳转和联系信息。
+作品集已同步为 10 页星光绚彩视觉，保留可选择文字、矢量图表、真实界面、目录跳转和联系信息。减少整页深色遮罩，改用局部柔边阅读蒙板、青蓝海光与淡紫高光。截图保留原始数据，使用明确标注的冷蓝蒙版和玻璃边缘衔接背景。
+
+我在意章节直接展示缩小的标题、简短引言和三条判断，不再通过按钮打开文字弹窗；保留女性动作视频、独立流星与前往 AI 协作章节的链接。

@@ -11,10 +11,10 @@
     ['#project-finfair .project-copy h3','fold'],['#project-skill .project-copy h3','stroke'],
     ['#project-marketing .project-copy h3','mask'],['#play-title','fold'],['#about-title','fold'],
     ['#method-title','stroke'],['#contact-title','fold'],['.play-story h3','stroke'],['.about-intro .lead','fold'],
-    ['.experience-item h3','stroke'],['.method-step strong','fold'],['.eval-poster-title','fold'],
+    ['.experience-item h3','stroke'],['.about-principle h3','fold'],['.method-step strong','fold'],['.eval-poster-title','fold'],
     ['.paper-question','fold'],['.marketing-chart-title','stroke']
   ];
-  const bodySelector='.about-subtitle,.hero-intro,.project-description,.project-kicker,.project-facts,.role-note,.section-aside,.play-story>p,.play-story>.issue-number,.about-intro>p:not(.lead),.experience-item p,.method-heading>p:not(.eyebrow),.method-step>span:not(.step-coordinate),.contact-content>p:not(.eyebrow)';
+  const bodySelector='.about-subtitle,.about-principle p,.hero-intro,.project-description,.project-kicker,.project-facts,.role-note,.section-aside,.play-story>p,.play-story>.issue-number,.about-intro>p:not(.lead),.experience-item p,.method-heading>p:not(.eyebrow),.method-step>span:not(.step-coordinate),.contact-content>p:not(.eyebrow)';
   function splitText(element,effect){
     if(element.dataset.dynamicText)return;
     element.dataset.dynamicText=effect;
@@ -111,9 +111,6 @@
     number.classList.add('has-stroke');const svg=document.createElementNS(ns,'svg');svg.setAttribute('viewBox','0 0 100 150');svg.setAttribute('class','number-stroke');svg.setAttribute('aria-hidden','true');
     ['stroke-draw','stroke-fill'].forEach(name=>{const glyph=document.createElementNS(ns,'text');glyph.setAttribute('x','3');glyph.setAttribute('y','127');glyph.setAttribute('font-size','142');glyph.setAttribute('class',name);glyph.textContent=label;svg.append(glyph);});number.replaceChildren(svg);
   });
-  document.querySelectorAll('#about-dialog h2').forEach(node=>splitText(node,'stroke'));
-  document.querySelectorAll('#about-dialog h3').forEach(node=>splitText(node,'fold'));
-  bodies(document.getElementById('about-dialog'));
   const caseContent=document.getElementById('case-content');
   new MutationObserver(()=>{
     caseContent.querySelectorAll('h2').forEach(node=>splitText(node,'stroke'));
