@@ -98,6 +98,7 @@
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(t=>lenis.raf(t*1000));
     gsap.ticker.lagSmoothing(0);
+    document.addEventListener('portfolio:work-filter',()=>{const work=document.getElementById('work'),root=document.querySelector('.prologue-scroll');lenis.resize();lenis.scrollTo(root.getBoundingClientRect().top+scrollY+Number(work.dataset.narrativeStop||0),{immediate:true});});
     const dialog = document.getElementById('case-dialog');
     new MutationObserver(() => { if (dialog.open) lenis.stop(); else if (!document.body.classList.contains('motion-intro')) lenis.start(); }).observe(dialog,{attributes:true,attributeFilter:['open']});
     document.addEventListener('click', event => {
@@ -110,7 +111,10 @@
       if (document.body.classList.contains('motion-intro')) introTimeline?.progress(1);
       lenis.resize();
       const story = target.closest('.prologue-scroll:not(.prologue-static)');
-      const destination = id === '#home' ? 0 : id === '#coordinates' && story ? story.getBoundingClientRect().top + scrollY + (story.offsetHeight - innerHeight) * .43 : target.getBoundingClientRect().top + window.scrollY - 76;
+      if(target.matches('.project')&&target.hidden)document.querySelector('[data-filter=all]').click();
+      const narrativeRoot=document.querySelector('.prologue-scroll:not(.narrative-static)');
+      const workScene=target.closest('.work-cinema');
+      const destination = id === '#home' ? 0 : narrativeRoot&&target.dataset.narrativeStop!==undefined ? narrativeRoot.getBoundingClientRect().top+scrollY+Number(target.dataset.narrativeStop) : workScene&&target.matches('.project') ? workScene.getBoundingClientRect().top+scrollY+Number(target.dataset.workStop||0) : id === '#work'&&target.classList.contains('work-cinema') ? target.getBoundingClientRect().top+scrollY : id === '#coordinates' && story ? story.getBoundingClientRect().top + scrollY + (story.offsetHeight - innerHeight) * .43 : target.getBoundingClientRect().top + window.scrollY - 76;
       lenis.scrollTo(destination,{duration:1.6,onComplete:()=>history.replaceState(null,'',id)});
     });
   }
@@ -193,10 +197,10 @@
       if (!document.getElementById('case-dialog').open) lenis?.start();
       setupScroll();
     }})
-      .fromTo('#app',{scale:.9,borderRadius:28},{scale:1,borderRadius:0,duration:1.4,ease:'expo.inOut'})
+      .fromTo(document.documentElement.classList.contains('prologue-mode')?'.prologue-world':'#app',document.documentElement.classList.contains('prologue-mode')?{opacity:.75}:{scale:.9,borderRadius:28},document.documentElement.classList.contains('prologue-mode')?{opacity:1,duration:1.4,ease:'power2.out'}:{scale:1,borderRadius:0,duration:1.4,ease:'expo.inOut'})
       .to('.header',{opacity:1,y:0,duration:.8,ease:'power3.out'},'-=.5')
       .to('#hero-title .w',{opacity:1,y:0,filter:'blur(0px)',duration:.95,stagger:.05,ease:'power3.out'},'-=.65')
-      .from('.hero-visual',{x:50,opacity:0,duration:1.3,ease:'power3.out'},.5)
+      .from('.hero-visual',{x:50,scale:.96,opacity:0,duration:1.3,ease:'power3.out'},.5)
       .from('.hero-intro,.hero-actions,.hero-handwriting',{y:14,opacity:0,duration:.8,stagger:.1,ease:'power3.out'},1.15)
       .from('.sky-glass',{opacity:0,scale:.65,duration:1,stagger:{each:.07,from:'random'},ease:'back.out(1.5)'},1);
   }
