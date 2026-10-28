@@ -109,7 +109,8 @@
       event.preventDefault();
       if (document.body.classList.contains('motion-intro')) introTimeline?.progress(1);
       lenis.resize();
-      const destination = id === '#home' ? 0 : target.getBoundingClientRect().top + window.scrollY - 76;
+      const story = target.closest('.prologue-scroll:not(.prologue-static)');
+      const destination = id === '#home' ? 0 : id === '#coordinates' && story ? story.getBoundingClientRect().top + scrollY + (story.offsetHeight - innerHeight) * .43 : target.getBoundingClientRect().top + window.scrollY - 76;
       lenis.scrollTo(destination,{duration:1.6,onComplete:()=>history.replaceState(null,'',id)});
     });
   }
@@ -117,12 +118,15 @@
   document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click',()=>requestAnimationFrame(()=>ScrollTrigger.refresh())));
 
   const setupScroll = () => {
+    if(!document.documentElement.classList.contains('prologue-mode')) {
     gsap.to('.hero-art',{yPercent:12,ease:'none',scrollTrigger:{trigger:'#home',start:'top top',end:'bottom top',scrub:true}});
     gsap.to('.hero-copy',{yPercent:-13,ease:'none',scrollTrigger:{trigger:'#home',start:'top top',end:'bottom top',scrub:true}});
     gsap.to('.hero-glass',{yPercent:-28,ease:'none',scrollTrigger:{trigger:'#home',start:'top top',end:'bottom top',scrub:true}});
-    document.querySelectorAll('.reveal').forEach(element=>gsap.from(element,{opacity:0,y:28,duration:.9,ease:'power3.out',scrollTrigger:{trigger:element,start:'top 91%',once:true}}));
-    document.querySelectorAll('.split-title:not(#hero-title)').forEach(element=>gsap.from(element.querySelectorAll('.w'),{opacity:0,y:22,filter:'blur(8px)',duration:.8,stagger:.035,ease:'power3.out',scrollTrigger:{trigger:element,start:'top 86%',once:true}}));
+    }
+    document.querySelectorAll('.reveal:not(.prologue-stage .reveal)').forEach(element=>gsap.from(element,{opacity:0,y:28,duration:.9,ease:'power3.out',scrollTrigger:{trigger:element,start:'top 91%',once:true}}));
+    document.querySelectorAll('.split-title:not(#hero-title):not(.prologue-stage .split-title)').forEach(element=>gsap.from(element.querySelectorAll('.w'),{opacity:0,y:22,filter:'blur(8px)',duration:.8,stagger:.035,ease:'power3.out',scrollTrigger:{trigger:element,start:'top 86%',once:true}}));
     const media = gsap.matchMedia();
+    if(!document.documentElement.classList.contains('prologue-mode')) {
     media.add('(min-width:901px)',()=>{
       setCounters(0);
       const proxy = {p:0};
@@ -139,6 +143,7 @@
       gsap.fromTo('.coordinate-orbit',{yPercent:20},{yPercent:0,ease:'none',scrollTrigger:{trigger:'#coordinates',start:'top bottom',end:'bottom bottom',scrub:true}});
       return ()=>setCounters(1);
     });
+    } else setCounters(1);
     media.add('(min-width:761px)',()=>{
       gsap.from('.method-panel-in',{y:100,opacity:0,duration:1.1,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'#method',start:'top 65%',once:true}});
       gsap.to('.method-constellation',{x:65,ease:'none',scrollTrigger:{trigger:'#method',start:'top bottom',end:'bottom top',scrub:true}});
