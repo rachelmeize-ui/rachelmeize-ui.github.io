@@ -9,7 +9,7 @@
     ['#hero-title','fold'],['.hero-handwriting','pressure'],['#coordinates-title','stroke'],['#work-title','mask'],
     ['#project-evaluation .project-copy h3','stroke'],['#project-campus .project-copy h3','mask'],
     ['#project-finfair .project-copy h3','fold'],['#project-skill .project-copy h3','stroke'],
-    ['#project-marketing .project-copy h3','mask'],['#play-title','fold'],['#about-title','fold'],
+    ['#project-geo .project-copy h3','fold'],['#project-marketing .project-copy h3','mask'],['#play-title','fold'],['#about-title','fold'],
     ['#method-title','stroke'],['#contact-title','fold'],['.play-story h3','stroke'],['.about-intro .lead','fold'],
     ['.experience-item h3','stroke'],['.about-principle h3','fold'],['.method-step strong','fold'],['.eval-poster-title','fold'],
     ['.paper-question','fold'],['.marketing-chart-title','stroke']

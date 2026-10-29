@@ -1,6 +1,7 @@
 'use strict';
 
 const REPO = 'https://github.com/rachelmeize-ui/CampusBudget';
+const OPERATIONS_PDF = 'assets/meize-operations-portfolio.pdf';
 const PDF = 'assets/meize-project-portfolio.pdf?v=20261029-web-portrait';
 const external = (label, url) => `<a class="text-link" href="${url}" target="_blank" rel="noopener noreferrer">${label} <span aria-hidden="true">↗</span></a>`;
 
@@ -83,6 +84,25 @@ cases.skill = {
   content:`<section class="case-section"><h3>一个真实暴露的规则缺口</h3><p>模拟信贷材料同时包含当前 420 万元预算与未来条件性 380 万元安排。V1 将尚未生效的 380 万元当作当前预算，暴露了“数字确实存在于材料里，使用状态却判断错了”的问题。</p></section><div class="skill-case-comparison"><div><span>V1 / 原场景失败</span><strong>380 万元</strong><p>误用未生效的后续安排。</p></div><div><span>V2 / 同场景复测</span><strong>420 万元</strong><p>保留当前预算，380 万登记为未生效变更。</p></div></div><section class="case-section"><h3>V2 增加了什么</h3><p>在应用变更前，先检查批准状态、触发条件、生效时间和适用版本。仅在生效条件明确满足后，变更才能覆盖当前基线，同时记录原值、新值和受影响文件。</p><p>版本对照中，该规则同步进入来源判断、变更流程与最终一致性检查。它是规则原则的补充，而不是把某个案例的 420 或 380 万写死在 Skill 内。</p></section><section class="case-section"><h3>7 类情景，而非一个通过率</h3><div class="case-table-wrap"><table class="case-table"><thead><tr><th>任务</th><th>希望检查的行为</th></tr></thead><tbody><tr><td>T1 正常案例</td><td>区分当前基线与未生效变更，保留失败与复测。</td></tr><tr><td>T2 缺失信息</td><td>将缺少的预算列为待确认，不自动补造。</td></tr><tr><td>T3 不适用任务</td><td>普通写诗请求不进入项目汇报工作流。</td></tr><tr><td>T4 正式变更</td><td>先形成影响清单，再同步修改 Word 与 PPT。</td></tr><tr><td>T5 场景迁移</td><td>从反欺诈切换到信贷时重新识别风险。</td></tr><tr><td>T6 越界请求</td><td>不把要求保证改善的说法写成已验证结果。</td></tr><tr><td>T7 自定义检查</td><td>将未经验证的供应商主张与项目事实区分。</td></tr></tbody></table></div></section><section class="case-section"><h3>检查 AI 诊断本身</h3><p>同组材料纠错实践还保留了问题台账：初版诊断中存在描述不准和遗漏，后续逐条核对来源后修正。AI 的检查结果本身也需要核验，特别是跨文件口径与虚构证据。</p></section><section class="case-section"><h3>当前范围</h3><p>测试记录包含失败、操作问题与复测，不将有限情景直接当作通用可靠率。真实业务还需要更独立的测试集与人工审核机制。</p></section><div class="case-actions"><a class="text-link" href="${PDF}" download="张美泽_网站作品集_竖版纯图.pdf">下载项目作品集 ↓</a></div>`
 };
 
+
+cases.geo = {
+  kicker:'06 / GEO / CONTENT & OPERATIONS',
+  title:'把用户问题，转成内容与行动。',
+  lead:'一段围绕企业 AI 应用定制的短期内容策划实践。将公开资料中的常见问题整理为选题、产品内容与可继续执行的发布计划。',
+  role:'2026.07 短期实习。负责资料整理、问题拆解、内容组织、多格式稿件及运营表；AI 辅助检索、归纳、初稿与排版。',
+  state:'已形成 10 个选题、五模块内容包和六表管理台。原排期条目为待发布，尚未完成发布后的平台引用、流量或转化验证。',
+  image:null,
+  content:`<div class="geo-case-summary"><span><b>10</b>内容选题</span><span><b>5</b>内容模块</span><span><b>6</b>运营工作表</span></div>
+    <section class="case-section"><h3>先整理企业在问什么</h3><p>从需求沟通、数据、成本、周期、效果、人才与安全等七类痛点入手，把公开资料整理成内容问题。行业场景与初步画像作为选题起点，后续可通过实际咨询反馈校验。</p></section>
+    <div class="case-table-wrap"><table class="case-table"><caption>原选题与规划摘录 · 缩写重排</caption><thead><tr><th>用户问题</th><th>内容方向</th><th>当时渠道规划</th></tr></thead><tbody><tr><td>Q1：不知道怎么与开发方沟通需求？</td><td>需求沟通指南与准备清单</td><td>CSDN / 知乎</td></tr><tr><td>Q6：投入产出怎么算，多久回本？</td><td>ROI 解释与测算框架</td><td>知乎 / CSDN</td></tr><tr><td>Q10：数据交给开发方安全吗？</td><td>数据安全 FAQ 与检查清单</td><td>公众号</td></tr></tbody></table></div>
+    <section class="case-section"><h3>同一项产品能力，按阅读深度表达</h3><p>内容包包含短介绍、标准介绍、8 项 FAQ、SaaS 与定制开发的对比长文，以及 JSON-LD 结构化元数据。将公司产品资料转化为快速了解、回答疑问和辅助选型的不同内容，整理为 Word、PDF 与 HTML 版本。</p><img class="case-image geo-faq-image" src="assets/geo-faq.webp" alt="实习交付的 FAQ 初稿局部，问题为定制开发与 SaaS 如何选择" loading="lazy"><p class="case-caption">原实习内容初稿局部（待发布），展示产品内容的组织与表达。</p></section>
+    <section class="case-section"><h3>把选题、渠道和排期放在一起</h3><div class="geo-deliveries"><span>01 / 选题库</span><span>02 / 信源分析</span><span>03 / 痛点分析</span><span>04 / 策略说明</span><span>05 / 发布计划</span><span>06 / 效果追踪</span></div><p>六表管理台记录用户问题、内容方向、P0/P1/P2 优先级、目标渠道与日期，并预留发布链接和复测记录。下面保留当时的真实计划状态。</p></section>
+    <div class="case-table-wrap"><table class="case-table"><caption>发布计划摘录 · 日期为当时目标排期</caption><thead><tr><th>选题</th><th>优先级</th><th>渠道与目标日期</th><th>状态</th></tr></thead><tbody><tr><td>Q5 / 成本与预算</td><td>P0</td><td>CSDN · 2026-07-28</td><td>待发布</td></tr><tr><td>Q8 / 项目风险</td><td>P0</td><td>CSDN＋知乎 · 2026-07-31</td><td>待发布</td></tr><tr><td>Q10 / 数据安全</td><td>P1</td><td>公众号 · 2026-08-07</td><td>待发布</td></tr></tbody></table></div>
+    <div class="case-grid"><section class="case-section"><h3>已经完成</h3><p>公开资料调研、选题拆解、五模块内容初稿、多格式整理与运营管理台。</p></section><section class="case-section"><h3>下一步怎样验证</h3><p>固定问题与平台模式进行复测，正式发布后记录引用、访问和咨询反馈，再调整选题与渠道。当前尚无推广效果数据。</p></section></div>
+    <section class="case-section"><h3>这段实践留下的判断</h3><p>内容要先回答用户的决策问题，再解释产品能力。复盘资料时，将平台回答记录与搜索模拟分开；对口径不一致的信源占比先核实，不直接用于证明渠道效果。</p></section>
+    <div class="case-actions"><a class="text-link" href="${OPERATIONS_PDF}" download="张美泽_AI产品运营作品集.pdf">下载运营作品集 · 8 页 PDF ↓</a></div>`
+};
+
 const dialog = document.getElementById('case-dialog');
 const caseContent = document.getElementById('case-content');
 let previousFocus;
@@ -95,6 +115,10 @@ function openCase(id, updateHash = true) {
   previousFocus = document.activeElement;
   if (!dialog.open) previousHash = location.hash.startsWith('#case-') ? '#work' : (location.hash || '#work');
   activeCase = id;
+  const download = dialog.querySelector('.dialog-toolbar > a');
+  download.href = id === 'geo' ? OPERATIONS_PDF : PDF;
+  download.download = id === 'geo' ? '张美泽_AI产品运营作品集.pdf' : '张美泽_网站作品集_竖版纯图.pdf';
+  download.textContent = id === 'geo' ? '下载运营作品集 ↓' : '下载完整作品集 ↓';
   caseContent.innerHTML = `<article class="case-inner"><header class="case-hero"><p class="case-kicker">${item.kicker}</p><h2 id="case-title">${item.title}</h2><p class="case-lead">${item.lead}</p></header><div class="case-meta"><div><strong>${item.roleLabel || "我的参与"}</strong>${item.role}</div><div><strong>当前状态</strong>${item.state}</div></div>${item.image ? `<img class="case-image ${id==='marketing'||id==='evaluation'?'full':''}" src="${item.image}" alt="${item.alt}"><p class="case-caption">${item.caption}</p>` : ""}${item.content}</article>`;
   if (!dialog.open) dialog.showModal();
   document.body.classList.add('modal-open');

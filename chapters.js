@@ -17,7 +17,7 @@
   const guide=document.createElement('section');guide.className='prologue-guide';guide.setAttribute('aria-label','精选作品引导');
   guide.append(heading);
   const rail=document.createElement('div');rail.className='prologue-index';rail.setAttribute('aria-label','快速定位项目');rail.setAttribute('data-lenis-prevent','');
-  const data=[['evaluation','AI 能力评测','错误归因 / 歧义探针'],['campus','CampusBudget','个人原型 / 迭代验证'],['finfair','FinFair','金融信息 / 原文核对'],['skill','金融汇报 Skill','版本规则 / 场景复测'],['marketing','营销响应预测','模型对比 / 业务判断']];
+  const data=[['evaluation','AI 能力评测','错误归因 / 歧义探针'],['campus','CampusBudget','个人原型 / 迭代验证'],['finfair','FinFair','金融信息 / 原文核对'],['skill','金融汇报 Skill','版本规则 / 场景复测'],['marketing','营销响应预测','模型对比 / 业务判断'],['geo','GEO 内容运营','选题策划 / 发布规划']];
   data.forEach(([key,title,note],i)=>{
     const link=document.createElement('a');link.className='prologue-index-card';link.href='#project-'+key;link.setAttribute('aria-label','定位到'+title+'项目概览');
     const number=document.createElement('span');number.className='index-number';number.textContent=String(i+1).padStart(2,'0');number.setAttribute('aria-hidden','true');

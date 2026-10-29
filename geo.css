@@ -1,0 +1,32 @@
+/* Content operations joins the existing star-ocean collection. */
+.operations-download{display:inline-flex;align-items:center;gap:12px;margin-top:17px;font:11px/1.7 var(--sans);color:#d3e7f6;border-bottom:1px solid #adcde34d;padding-bottom:5px;transition:color .2s,border-color .2s}
+.operations-download span{font-size:9px;letter-spacing:.04em;color:#adc5dc}.operations-download:hover{color:#f3fcff;border-color:#b2e8f6}
+.geo-visual{background:linear-gradient(130deg,#102440e8,#163849ad),url('assets/portal-ocean.webp') center/cover;color:#ecf5ff}
+.geo-visual:before{content:'';position:absolute;inset:0;background:linear-gradient(165deg,transparent 55%,#a5d7ee0c);pointer-events:none}
+.geo-poster{position:absolute;inset:54px 30px 59px;display:flex;flex-direction:column;justify-content:center}
+.geo-poster-kicker{font:8px/1.5 var(--sans);letter-spacing:.18em;color:#acc9de;margin-bottom:18px}
+.geo-poster-title{font:30px/1.35 var(--serif);color:#edf7ff;letter-spacing:.02em}
+.geo-question-list{display:grid;gap:9px;margin-top:25px}
+.geo-question-list>span{display:flex;align-items:center;gap:12px;min-height:39px;padding:10px 13px;border:1px solid #a4c9e72e;border-radius:8px;background:#b1d3eb07;font:11px/1.5 var(--sans);color:#d3e5f3}
+.geo-question-list i{font-size:9px;font-style:normal;color:#a5dce9;min-width:22px}.geo-question-list b{margin-left:auto;font-size:9px;font-weight:400;color:#a7c2d8;white-space:nowrap}
+.geo-visual .visual-caption{color:#c9e1ef}.geo-visual:hover .geo-question-list>span{border-color:#b3e1f14d}
+.geo-case-summary{display:flex;gap:44px;margin:32px 0 45px;padding:25px 0;border-block:1px solid #c6d3e3}
+.geo-case-summary>span{font-size:11px;color:#4a627e}.geo-case-summary b{display:block;font:40px/1.3 Georgia,var(--serif);color:#2d5274;margin-bottom:7px}
+.geo-faq-image{background:white;border:1px solid #d3deeb;padding:15px}
+.geo-deliveries{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:24px 0}
+.geo-deliveries>span{font-size:11px;line-height:1.6;padding:14px 16px;background:#e5edf6;border:1px solid #cddbe8;border-radius:8px;color:#34516f}
+.case-table caption{text-align:left;padding:0 0 10px;font-size:10px;color:#61778f}
+.contact-links{flex-wrap:wrap;row-gap:12px}
+@media(max-width:1100px){.geo-poster{inset:44px 24px 53px}.geo-poster-title{font-size:27px}.geo-question-list{margin-top:20px;gap:7px}.geo-question-list>span{min-height:34px;padding:8px 10px;font-size:10px}}
+@media(max-width:760px){
+  .operations-download{margin-top:13px;font-size:10px}.operations-download span{font-size:9px}
+  .unified-mode .narrative-static #project-geo .geo-poster{inset:42px 20px 53px;justify-content:flex-start}
+  .unified-mode .narrative-static #project-geo .geo-poster-kicker{display:none}
+  .unified-mode .narrative-static #project-geo .geo-poster-title{font-size:20px;line-height:1.25}
+  .unified-mode .narrative-static #project-geo .geo-question-list{margin-top:11px;gap:5px}
+  .unified-mode .narrative-static #project-geo .geo-question-list>span{padding:5px 9px;min-height:24px;font-size:9px;gap:8px}
+  .unified-mode .narrative-static #project-geo .geo-question-list b{font-size:8px}
+  .geo-case-summary{gap:35px;margin:24px 0 32px}.geo-case-summary b{font-size:33px}.geo-case-summary>span{font-size:10px}
+  .geo-deliveries{grid-template-columns:repeat(2,1fr)}.geo-deliveries>span{font-size:10px;padding:12px}
+}
+@media(prefers-reduced-motion:reduce){.geo-visual,.geo-question-list>span,.operations-download{transition:none}}

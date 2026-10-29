@@ -6,7 +6,7 @@
   const reduce=matchMedia('(prefers-reduced-motion: reduce)');
   if(reduce.matches){projects.forEach(project=>{project.hidden=false;project.classList.add('is-project-active');});document.addEventListener('portfolio:category',event=>{const target=event.detail.category==='all'?projects[0]:projects.find(project=>project.dataset.category===event.detail.category);target?.scrollIntoView({behavior:'instant',block:'start'});});return;}
   const track=document.createElement('div');track.className='work-track';track.tabIndex=0;
-  track.setAttribute('role','region');track.setAttribute('aria-label','左右浏览五个项目');track.setAttribute('aria-roledescription','作品轮播');
+  track.setAttribute('role','region');track.setAttribute('aria-label',`左右浏览 ${projects.length} 个项目`);track.setAttribute('aria-roledescription','作品轮播');
   track.setAttribute('data-lenis-prevent','');
   const frames=projects.map((project,index)=>{
     project.hidden=false;project.classList.remove('narrative-pane');
@@ -15,7 +15,7 @@
     frame.append(project);track.append(frame);return frame;
   });
   shell.append(track);
-  const gesture=document.createElement('p');gesture.className='work-gesture';gesture.textContent='左右滑动，浏览 5 个项目 →';work.querySelector('.work-toolbar').append(gesture);
+  const gesture=document.createElement('p');gesture.className='work-gesture';gesture.textContent=`左右滑动，浏览 ${projects.length} 个项目 →`;work.querySelector('.work-toolbar').append(gesture);
   const controls=document.createElement('div');controls.className='work-carousel-controls';
   const prev=document.createElement('button');prev.className='work-arrow';prev.textContent='←';prev.setAttribute('aria-label','上一个项目');
   const next=document.createElement('button');next.className='work-arrow';next.textContent='→';next.setAttribute('aria-label','下一个项目');
@@ -34,7 +34,7 @@
     dotButtons.forEach((button,i)=>{button.classList.toggle('is-current',i===index);button.setAttribute('aria-current',i===index?'true':'false');});
     document.querySelectorAll('[data-filter]').forEach(button=>{const active=button.dataset.filter===projects[index].dataset.category;button.classList.toggle('active',active);button.setAttribute('aria-pressed',String(active));});
     const activeCategory=document.querySelector('[data-filter].active');if(activeCategory){const list=activeCategory.parentElement;list.scrollTo({left:Math.max(0,activeCategory.offsetLeft-(list.clientWidth-activeCategory.offsetWidth)/2),behavior:reduce.matches?'instant':'smooth'});}
-    work.dataset.sceneImage=String([1,2,3,1,0][index]);
+    work.dataset.sceneImage=projects[index].dataset.sceneImage || String([1,2,3,1,0][index] ?? 1);
     position.textContent=`${String(index+1).padStart(2,'0')} / ${String(projects.length).padStart(2,'0')}`;
     document.getElementById('filter-note').textContent=names[index]+' · 左右浏览';
     prev.disabled=index===0;next.disabled=index===projects.length-1;
